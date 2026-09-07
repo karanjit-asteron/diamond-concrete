@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Diamond Concrete Works Ltd. provides commercial, exterior and residential concrete services in Edmonton, Alberta.">
+  <meta name="theme-color" content="#064e3b">
+  <title>Diamond Concrete Works Ltd. | Edmonton Concrete Contractor</title>
+
+  <!-- Replace favicon.png with a square icon exported from the supplied logo. -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --brand-green: #00a650;
+      --forest: #064e3b;
+      --forest-deep: #03392c;
+      --charcoal: #171918;
+      --grey: #727875;
+      --concrete: #e8ebe9;
+      --off-white: #f7f7f3;
+      --white: #ffffff;
+      --line: rgba(23, 25, 24, 0.12);
+      --shadow: 0 1.5rem 4rem rgba(6, 78, 59, 0.12);
+      --content: min(1180px, calc(100% - 2rem));
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--charcoal);
+      background: var(--white);
+      font-family: "DM Sans", system-ui, sans-serif;
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.menu-loading {
+      padding-top: 7.65rem;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid rgba(0, 166, 80, 0.45);
+      outline-offset: 3px;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Manrope", system-ui, sans-serif;
+      line-height: 1.08;
+    }
+
+    .container {
+      width: var(--content);
+      margin-inline: auto;
+    }
+
+    .section {
+      padding: clamp(5rem, 9vw, 8rem) 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 1rem;
+      color: var(--forest);
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 2.25rem;
+      height: 2px;
+      content: "";
+      background: var(--brand-green);
+    }
+
+    .section-title {
+      max-width: 44rem;
+      margin-bottom: 1.25rem;
+      font-size: clamp(2.15rem, 5vw, 4rem);
+      letter-spacing: -0.045em;
+    }
+
+    .section-intro {
+      max-width: 42rem;
+      margin-bottom: 0;
+      color: var(--grey);
+      font-size: 1.06rem;
+    }
+
+    .button {
+      min-height: 3.25rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.85rem 1.35rem;
+      border: 1px solid transparent;
+      border-radius: 0.2rem;
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button--primary {
+      color: var(--white);
+      background: var(--brand-green);
+    }
+
+    .button--primary:hover {
+      background: #008f45;
+    }
+
+    .button--outline {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.55);
+    }
+
+    .button--outline:hover {
+      color: var(--charcoal);
+      background: var(--white);
+    }
+
+    .button svg {
+      width: 1rem;
+    }
+
+    .component-error {
+      width: var(--content);
+      margin: 1rem auto;
+      padding: 1rem;
+      color: #7a1d1d;
+      background: #fff1f1;
+      border: 1px solid #f4b8b8;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: min(760px, calc(100vh - 7rem));
+      display: grid;
+      align-items: center;
+      overflow: hidden;
+      color: var(--white);
+      background-color: var(--charcoal);
+      background-image:
+        linear-gradient(90deg, rgba(10, 18, 14, 0.96) 0%, rgba(10, 18, 14, 0.84) 42%, rgba(10, 18, 14, 0.28) 78%, rgba(10, 18, 14, 0.2) 100%),
+        url("assets/images/home-hero-commercial-slab.webp");
+      background-position: center;
+      background-size: cover;
+    }
+
+    .hero::before {
+      position: absolute;
+      inset: 0;
+      content: "";
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), transparent 45%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      position: absolute;
+      right: 4vw;
+      bottom: -7rem;
+      width: 18rem;
+      height: 18rem;
+      content: "";
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transform: rotate(45deg);
+      pointer-events: none;
+    }
+
+    .hero__inner {
+      position: relative;
+      z-index: 1;
+      padding: 6rem 0;
+    }
+
+    .hero__content {
+      max-width: 48rem;
+    }
+
+    .hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 1.35rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .hero__eyebrow::before {
+      width: 2.5rem;
+      height: 2px;
+      content: "";
+      background: var(--brand-green);
+    }
+
+    .hero h1 {
+      margin-bottom: 1.4rem;
+      font-size: clamp(3.1rem, 7vw, 6.7rem);
+      letter-spacing: -0.065em;
+    }
+
+    .hero h1 span {
+      color: var(--brand-green);
+    }
+
+    .hero__text {
+      max-width: 38rem;
+      margin-bottom: 2.2rem;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    /* CAPABILITIES STRIP */
+    .capabilities {
+      position: relative;
+      z-index: 2;
+      margin-top: -2.5rem;
+    }
+
+    .capabilities__inner {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      color: var(--white);
+      background: var(--forest);
+      box-shadow: var(--shadow);
+    }
+
+    .capability {
+      min-height: 8.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.5rem clamp(1.2rem, 3vw, 2rem);
+      border-right: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .capability:last-child {
+      border-right: 0;
+    }
+
+    .capability__number {
+      color: var(--brand-green);
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+    }
+
+    .capability strong,
+    .capability span {
+      display: block;
+    }
+
+    .capability strong {
+      margin-bottom: 0.15rem;
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 0.98rem;
+    }
+
+    .capability span {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.84rem;
+    }
+
+    /* SERVICES */
+    .services-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .services-heading .section-title {
+      margin-bottom: 0;
+    }
+
+    .text-link {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--forest);
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .text-link:hover {
+      color: var(--brand-green);
+    }
+
+    .text-link svg {
+      width: 1rem;
+      transition: transform 180ms ease;
+    }
+
+    .text-link:hover svg {
+      transform: translateX(0.2rem);
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .service-card {
+      position: relative;
+      min-height: 21rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(2rem, 4vw, 3rem);
+      color: var(--charcoal);
+      background: var(--white);
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      text-decoration: none;
+      transition: background 220ms ease, color 220ms ease, transform 220ms ease;
+    }
+
+    .service-card:hover {
+      z-index: 1;
+      color: var(--white);
+      background: var(--forest);
+      transform: translateY(-0.35rem);
+      box-shadow: var(--shadow);
+    }
+
+    .service-card__top {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .service-card__number {
+      color: var(--brand-green);
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+    }
+
+    .service-card__icon {
+      width: 3rem;
+      height: 3rem;
+      display: grid;
+      place-items: center;
+      color: var(--forest);
+      background: rgba(0, 166, 80, 0.09);
+      border-radius: 50%;
+      transition: color 220ms ease, background 220ms ease;
+    }
+
+    .service-card:hover .service-card__icon {
+      color: var(--white);
+      background: var(--brand-green);
+    }
+
+    .service-card__icon svg {
+      width: 1.35rem;
+    }
+
+    .service-card h3 {
+      margin-bottom: 0.8rem;
+      font-size: clamp(1.6rem, 3vw, 2.25rem);
+      letter-spacing: -0.035em;
+    }
+
+    .service-card p {
+      max-width: 31rem;
+      margin-bottom: 1.4rem;
+      color: var(--grey);
+      transition: color 220ms ease;
+    }
+
+    .service-card:hover p {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .service-card__arrow {
+      width: 2.6rem;
+      height: 2.6rem;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: var(--charcoal);
+      border-radius: 50%;
+    }
+
+    .service-card__arrow svg {
+      width: 1rem;
+    }
+
+    /* PRECISION */
+    .precision {
+      color: var(--white);
+      background: var(--charcoal);
+    }
+
+    .precision__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      align-items: stretch;
+      gap: clamp(2.5rem, 7vw, 6rem);
+    }
+
+    .precision__image {
+      min-height: 38rem;
+      background-color: #262a28;
+      background-image:
+        linear-gradient(180deg, transparent 58%, rgba(3, 57, 44, 0.72)),
+        url("assets/images/home-precision-finishing.webp");
+      background-position: center;
+      background-size: cover;
+      box-shadow: 1.5rem 1.5rem 0 rgba(0, 166, 80, 0.12);
+    }
+
+    .precision__content {
+      align-self: center;
+    }
+
+    .precision .eyebrow {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .precision .section-title {
+      margin-bottom: 1.5rem;
+    }
+
+    .precision__content > p {
+      margin-bottom: 2rem;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 1.05rem;
+    }
+
+    .precision-list {
+      margin: 0 0 2.25rem;
+      padding: 0;
+      list-style: none;
+    }
+
+    .precision-list li {
+      display: grid;
+      grid-template-columns: 1.4rem 1fr;
+      gap: 0.8rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .precision-list svg {
+      width: 1.2rem;
+      margin-top: 0.18rem;
+      color: var(--brand-green);
+    }
+
+    /* PROJECTS */
+    .projects {
+      background: var(--off-white);
+    }
+
+    .projects__heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .projects__heading .section-title {
+      margin-bottom: 0;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      grid-template-rows: repeat(2, 18rem);
+      gap: 1rem;
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      color: var(--white);
+      background-color: #343a37;
+      background-position: center;
+      background-size: cover;
+      text-decoration: none;
+    }
+
+    .project-card:nth-child(1) {
+      grid-row: 1 / 3;
+      background-image: url("assets/images/home-project-commercial.webp");
+    }
+
+    .project-card:nth-child(2) {
+      background-image: url("assets/images/home-project-driveway.webp");
+    }
+
+    .project-card:nth-child(3) {
+      background-image: url("assets/images/home-project-exposed-aggregate.webp");
+    }
+
+    .project-card::before {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      content: "";
+      background: linear-gradient(180deg, transparent 35%, rgba(5, 15, 11, 0.9));
+      transition: background 220ms ease;
+    }
+
+    .project-card::after {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      content: "";
+      background: linear-gradient(135deg, #36423d, #18221e);
+    }
+
+    .project-card:hover::before {
+      background: linear-gradient(180deg, rgba(0, 166, 80, 0.08), rgba(3, 57, 44, 0.95));
+    }
+
+    .project-card__content {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: clamp(1.4rem, 4vw, 2.5rem);
+    }
+
+    .project-card__label {
+      display: block;
+      margin-bottom: 0.4rem;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .project-card h3 {
+      margin: 0;
+      font-size: clamp(1.25rem, 3vw, 2.1rem);
+    }
+
+    .project-card__arrow {
+      width: 2.8rem;
+      height: 2.8rem;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: var(--brand-green);
+      border-radius: 50%;
+      transition: transform 180ms ease;
+    }
+
+    .project-card:hover .project-card__arrow {
+      transform: translate(0.2rem, -0.2rem);
+    }
+
+    .project-card__arrow svg {
+      width: 1rem;
+    }
+
+    /* WHY US */
+    .quality-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      align-items: start;
+      gap: clamp(3rem, 8vw, 7rem);
+    }
+
+    .quality-intro {
+      position: sticky;
+      top: 3rem;
+    }
+
+    .quality-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .quality-item {
+      display: grid;
+      grid-template-columns: 3.4rem 1fr;
+      gap: 1.25rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .quality-item__icon {
+      width: 3.1rem;
+      height: 3.1rem;
+      display: grid;
+      place-items: center;
+      color: var(--forest);
+      background: rgba(0, 166, 80, 0.09);
+      border-radius: 50%;
+    }
+
+    .quality-item__icon svg {
+      width: 1.4rem;
+    }
+
+    .quality-item h3 {
+      margin-bottom: 0.55rem;
+      font-size: 1.25rem;
+    }
+
+    .quality-item p {
+      margin: 0;
+      color: var(--grey);
+    }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      color: var(--white);
+      background: var(--forest-deep);
+    }
+
+    .testimonials .eyebrow {
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .testimonials__heading {
+      max-width: 50rem;
+      margin-bottom: 3rem;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .testimonial-card {
+      min-height: 18rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+    }
+
+    .testimonial-mark {
+      color: var(--brand-green);
+      font-family: Georgia, serif;
+      font-size: 3.5rem;
+      line-height: 0.8;
+    }
+
+    .testimonial-card blockquote {
+      margin: 1.2rem 0 2rem;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 1.05rem;
+      line-height: 1.65;
+    }
+
+    .testimonial-card footer {
+      padding-top: 1rem;
+      color: rgba(255, 255, 255, 0.55);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.85rem;
+    }
+
+    .testimonial-card footer strong {
+      display: block;
+      color: var(--white);
+      font-size: 0.92rem;
+    }
+
+    /* CTA */
+    .cta {
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      background: var(--brand-green);
+    }
+
+    .cta::after {
+      position: absolute;
+      right: -8rem;
+      bottom: -12rem;
+      width: 30rem;
+      height: 30rem;
+      content: "";
+      border: 4rem solid rgba(255, 255, 255, 0.08);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .cta__inner {
+      position: relative;
+      z-index: 1;
+      min-height: 23rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+    }
+
+    .cta h2 {
+      max-width: 46rem;
+      margin-bottom: 0.75rem;
+      font-size: clamp(2.4rem, 5vw, 4.7rem);
+      letter-spacing: -0.055em;
+    }
+
+    .cta p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.05rem;
+    }
+
+    .cta .button {
+      flex: 0 0 auto;
+      color: var(--white);
+      background: var(--charcoal);
+    }
+
+    .cta .button:hover {
+      background: var(--forest-deep);
+    }
+
+    /* REVEAL ANIMATION */
+    .reveal {
+      opacity: 0;
+      transform: translateY(1.2rem);
+      transition: opacity 600ms ease, transform 600ms ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .capabilities__inner,
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .capability {
+        min-height: 6.5rem;
+        border-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+      }
+
+      .capability:last-child {
+        border-bottom: 0;
+      }
+
+      .precision__grid,
+      .quality-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .precision__image {
+        min-height: 30rem;
+      }
+
+      .quality-intro {
+        position: static;
+      }
+
+      .cta__inner {
+        min-height: 27rem;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .hero {
+        min-height: 680px;
+        background-image:
+          linear-gradient(90deg, rgba(10, 18, 14, 0.94), rgba(10, 18, 14, 0.72)),
+          url("assets/images/home-hero-commercial-slab.webp");
+        background-position: 62% center;
+      }
+
+      .hero h1 {
+        font-size: clamp(3rem, 14vw, 4.7rem);
+      }
+
+      .services-heading,
+      .projects__heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card {
+        min-height: 19rem;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 22rem);
+      }
+
+      .project-card:nth-child(1) {
+        grid-row: auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero__actions,
+      .hero__actions .button,
+      .cta .button {
+        width: 100%;
+      }
+
+      .section {
+        padding: 4.5rem 0;
+      }
+
+      .precision__image {
+        min-height: 24rem;
+        box-shadow: 0.75rem 0.75rem 0 rgba(0, 166, 80, 0.12);
+      }
+
+      .quality-item {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body class="menu-loading">
+  <div id="header-placeholder" aria-live="polite"></div>
+
+  <main id="main-content">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <div class="hero__eyebrow">Quality at its finest</div>
+          <h1 id="hero-title">Concrete built to <span>perform.</span></h1>
+          <p class="hero__text">Commercial, exterior and residential concrete work delivered with capable equipment, careful preparation and a finish made to last.</p>
+          <div class="hero__actions">
+            <a class="button button--primary" href="contact.html">
+              Request a Quote
+              <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg>
+            </a>
+            <a class="button button--outline" href="projects.html">View Our Work</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="capabilities" aria-label="Core capabilities">
+      <div class="container capabilities__inner">
+        <div class="capability">
+          <span class="capability__number">01</span>
+          <div><strong>Commercial Concrete</strong><span>Slabs engineered for demanding spaces</span></div>
+        </div>
+        <div class="capability">
+          <span class="capability__number">02</span>
+          <div><strong>Precision Finishing</strong><span>Equipment selected to support FF/FL goals</span></div>
+        </div>
+        <div class="capability">
+          <span class="capability__number">03</span>
+          <div><strong>Residential Concrete</strong><span>Functional surfaces with a refined finish</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="services-title">
+      <div class="container">
+        <div class="services-heading reveal">
+          <div>
+            <span class="eyebrow">Our expertise</span>
+            <h2 class="section-title" id="services-title">Concrete capability from base to finish.</h2>
+          </div>
+          <a class="text-link" href="services.html">Explore all services <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></a>
+        </div>
+
+        <div class="service-grid reveal">
+          <a class="service-card" href="commercial-concrete.html">
+            <div class="service-card__top">
+              <span class="service-card__number">01 / COMMERCIAL</span>
+              <span class="service-card__icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 21V8l8-5 8 5v13M8 21v-6h8v6M8 10h.01M12 10h.01M16 10h.01"/></svg></span>
+            </div>
+            <div>
+              <h3>Commercial Concrete</h3>
+              <p>Commercial slabs, suspended slabs, slab on grade and structural slab solutions.</p>
+              <span class="service-card__arrow"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 15 15 5M7 5h8v8"/></svg></span>
+            </div>
+          </a>
+
+          <a class="service-card" href="exterior-site-work.html">
+            <div class="service-card__top">
+              <span class="service-card__number">02 / EXTERIOR</span>
+              <span class="service-card__icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 19h18M5 15h14M7 11h10M9 7h6"/></svg></span>
+            </div>
+            <div>
+              <h3>Exterior Site Work</h3>
+              <p>Sidewalks, ramps, steps, curbs and barrier curbs built for everyday performance.</p>
+              <span class="service-card__arrow"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 15 15 5M7 5h8v8"/></svg></span>
+            </div>
+          </a>
+
+          <a class="service-card" href="residential-concrete.html">
+            <div class="service-card__top">
+              <span class="service-card__number">03 / RESIDENTIAL</span>
+              <span class="service-card__icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m3 11 9-8 9 8M5 10v11h14V10M9 21v-7h6v7"/></svg></span>
+            </div>
+            <div>
+              <h3>Residential Concrete</h3>
+              <p>Basement floors, garage floors, sidewalks and driveways for residential properties.</p>
+              <span class="service-card__arrow"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 15 15 5M7 5h8v8"/></svg></span>
+            </div>
+          </a>
+
+          <a class="service-card" href="concrete-finishes.html">
+            <div class="service-card__top">
+              <span class="service-card__number">04 / FINISHES</span>
+              <span class="service-card__icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 18h16M6 14h12M8 10h8M10 6h4"/><path d="M3 21h18"/></svg></span>
+            </div>
+            <div>
+              <h3>Concrete Finishes</h3>
+              <p>Broom finish, exposed aggregate and stamped concrete options for the right final look.</p>
+              <span class="service-card__arrow"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 15 15 5M7 5h8v8"/></svg></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section precision" aria-labelledby="precision-title">
+      <div class="container precision__grid">
+        <div class="precision__image reveal" role="img" aria-label="Concrete finishing equipment working on a commercial slab"></div>
+        <div class="precision__content reveal">
+          <span class="eyebrow">Precision under pressure</span>
+          <h2 class="section-title" id="precision-title">The right equipment. A measured finish.</h2>
+          <p>For commercial floors, flatness and levelness affect far more than appearance. Our equipment and placement approach are selected to support the FF/FL objectives established for the project.</p>
+          <ul class="precision-list">
+            <li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-9"/></svg><span>Commercial slab placement and finishing</span></li>
+            <li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-9"/></svg><span>Support for specified floor flatness and levelness goals</span></li>
+            <li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-9"/></svg><span>Careful coordination from preparation through final finish</span></li>
+          </ul>
+          <a class="button button--primary" href="commercial-concrete.html">Explore Commercial Concrete</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section projects" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="projects__heading reveal">
+          <div>
+            <span class="eyebrow">Featured work</span>
+            <h2 class="section-title" id="projects-title">Work that speaks in the finish.</h2>
+          </div>
+          <a class="text-link" href="projects.html">View project gallery <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></a>
+        </div>
+
+        <div class="project-grid reveal">
+          <a class="project-card" href="projects.html" aria-label="View commercial slab projects">
+            <div class="project-card__content">
+              <div><span class="project-card__label">Commercial</span><h3>Large-Format Slab</h3></div>
+              <span class="project-card__arrow"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 15 15 5M7 5h8v8"/></svg></span>
+            </div>
+          </a>
+          <a class="project-card" href="projects.html" aria-label="View residential driveway projects">
+            <div class="project-card__content">
+              <div><span class="project-card__label">Residential</span><h3>Driveway Finish</h3></div>
+              <span class="project-card__arrow"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 15 15 5M7 5h8v8"/></svg></span>
+            </div>
+          </a>
+          <a class="project-card" href="projects.html" aria-label="View exposed aggregate projects">
+            <div class="project-card__content">
+              <div><span class="project-card__label">Finish</span><h3>Exposed Aggregate</h3></div>
+              <span class="project-card__arrow"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 15 15 5M7 5h8v8"/></svg></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="quality-title">
+      <div class="container quality-grid">
+        <div class="quality-intro reveal">
+          <span class="eyebrow">Why Diamond</span>
+          <h2 class="section-title" id="quality-title">Built around quality, not shortcuts.</h2>
+          <p class="section-intro">Every project begins with the intended use of the concrete and ends with close attention to its finished surface.</p>
+        </div>
+        <div class="quality-list reveal">
+          <div class="quality-item">
+            <span class="quality-item__icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19h16M7 19V9l5-4 5 4v10M9 12h6"/></svg></span>
+            <div><h3>Commercial Capability</h3><p>Experience across multiple slab types, exterior structures and functional concrete surfaces.</p></div>
+          </div>
+          <div class="quality-item">
+            <span class="quality-item__icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="m12 7 1.5 3 3.5.5-2.5 2.5.5 3.5-3-1.5-3 1.5.5-3.5L7 10.5l3.5-.5L12 7Z"/></svg></span>
+            <div><h3>Finish-Focused Work</h3><p>Broom, exposed aggregate and stamped options selected to suit the surface and desired appearance.</p></div>
+          </div>
+          <div class="quality-item">
+            <span class="quality-item__icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 17h16M6 13h12M8 9h8M10 5h4"/><path d="m7 21 5-4 5 4"/></svg></span>
+            <div><h3>Purpose-Built Equipment</h3><p>Equipment and processes selected to support consistent placement, levelling and finishing.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section testimonials" aria-labelledby="testimonials-title">
+      <div class="container">
+        <div class="testimonials__heading reveal">
+          <span class="eyebrow">Client feedback</span>
+          <h2 class="section-title" id="testimonials-title">Trusted work is remembered.</h2>
+          <p class="section-intro" style="color: rgba(255,255,255,.65)">Replace the sample placeholders below with client-approved testimonials before the website goes live.</p>
+        </div>
+
+        <!-- IMPORTANT: These are honest placeholders, not invented customer reviews. -->
+        <div class="testimonial-grid reveal">
+          <article class="testimonial-card">
+            <div><span class="testimonial-mark" aria-hidden="true">“</span><blockquote>Add an approved client testimonial about the quality of the concrete work and finished result.</blockquote></div>
+            <footer><strong>Client name</strong>Project type</footer>
+          </article>
+          <article class="testimonial-card">
+            <div><span class="testimonial-mark" aria-hidden="true">“</span><blockquote>Add an approved client testimonial about communication, scheduling and professionalism.</blockquote></div>
+            <footer><strong>Client name</strong>Project type</footer>
+          </article>
+          <article class="testimonial-card">
+            <div><span class="testimonial-mark" aria-hidden="true">“</span><blockquote>Add an approved client testimonial about the team's commercial concrete capabilities.</blockquote></div>
+            <footer><strong>Client name</strong>Project type</footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" aria-labelledby="cta-title">
+      <div class="container cta__inner">
+        <div class="reveal">
+          <h2 id="cta-title">Planning a concrete project?</h2>
+          <p>Tell us what you are building and what the project requires.</p>
+        </div>
+        <a class="button reveal" href="contact.html">Request a Quote <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder" aria-live="polite"></div>
+
+  <script>
+    /**
+     * Loads header.html and footer.html, including the <style> and <script>
+     * inside each component. This works on GitHub Pages or a local web server.
+     * Browsers block fetch() when an HTML file is opened directly with file://.
+     */
+    async function loadComponent(targetId, fileName) {
+      const target = document.getElementById(targetId);
+      if (!target) return;
+
+      try {
+        const response = await fetch(fileName);
+        if (!response.ok) throw new Error(`Unable to load ${fileName}`);
+
+        target.innerHTML = await response.text();
+
+        // Scripts inserted with innerHTML do not run automatically, so recreate them.
+        target.querySelectorAll('script').forEach((oldScript) => {
+          const newScript = document.createElement('script');
+          Array.from(oldScript.attributes).forEach((attribute) => {
+            newScript.setAttribute(attribute.name, attribute.value);
+          });
+          newScript.textContent = oldScript.textContent;
+          oldScript.replaceWith(newScript);
+        });
+      } catch (error) {
+        console.error(error);
+        target.innerHTML = `<div class="component-error">${fileName} could not be loaded. Preview the website through a local server or GitHub Pages.</div>`;
+      }
+    }
+
+    async function initializePage() {
+      await Promise.all([
+        loadComponent('header-placeholder', 'header.html'),
+        loadComponent('footer-placeholder', 'footer.html')
+      ]);
+
+      document.body.classList.remove('menu-loading');
+
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const revealElements = document.querySelectorAll('.reveal');
+
+      if (reducedMotion || !('IntersectionObserver' in window)) {
+        revealElements.forEach((element) => element.classList.add('is-visible'));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      revealElements.forEach((element) => observer.observe(element));
+    }
+
+    document.addEventListener('DOMContentLoaded', initializePage);
+  </script>
+</body>
+</html>
