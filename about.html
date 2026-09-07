@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn about Diamond Concrete Works Ltd., an Edmonton concrete contractor focused on commercial, exterior and residential concrete work.">
+  <meta name="theme-color" content="#064e3b">
+  <title>About Us | Diamond Concrete Works Ltd.</title>
+
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --brand-green: #00a650;
+      --forest: #064e3b;
+      --forest-deep: #03392c;
+      --charcoal: #171918;
+      --grey: #727875;
+      --concrete: #e8ebe9;
+      --off-white: #f7f7f3;
+      --white: #ffffff;
+      --line: rgba(23, 25, 24, 0.12);
+      --shadow: 0 1.5rem 4rem rgba(6, 78, 59, 0.14);
+      --content: min(1180px, calc(100% - 2rem));
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--charcoal);
+      background: var(--white);
+      font-family: "DM Sans", system-ui, sans-serif;
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.menu-loading {
+      padding-top: 7.65rem;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    a,
+    button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid rgba(0, 166, 80, 0.45);
+      outline-offset: 3px;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Manrope", system-ui, sans-serif;
+      line-height: 1.08;
+    }
+
+    .container {
+      width: var(--content);
+      margin-inline: auto;
+    }
+
+    .section {
+      padding: clamp(5rem, 9vw, 8rem) 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 1rem;
+      color: var(--forest);
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 2.25rem;
+      height: 2px;
+      content: "";
+      background: var(--brand-green);
+    }
+
+    .section-title {
+      max-width: 46rem;
+      margin-bottom: 1.25rem;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      letter-spacing: -0.05em;
+    }
+
+    .section-intro {
+      max-width: 43rem;
+      margin-bottom: 0;
+      color: var(--grey);
+      font-size: 1.06rem;
+    }
+
+    .button {
+      min-height: 3.25rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.85rem 1.35rem;
+      color: var(--white);
+      background: var(--brand-green);
+      border: 1px solid transparent;
+      border-radius: 0.2rem;
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-decoration: none;
+      transition: background 180ms ease, transform 180ms ease;
+    }
+
+    .button:hover {
+      background: #008f45;
+      transform: translateY(-2px);
+    }
+
+    .button svg {
+      width: 1rem;
+    }
+
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      color: var(--forest);
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .text-link:hover {
+      color: var(--brand-green);
+    }
+
+    .text-link svg {
+      width: 1rem;
+      transition: transform 180ms ease;
+    }
+
+    .text-link:hover svg {
+      transform: translateX(0.2rem);
+    }
+
+    .component-error {
+      width: var(--content);
+      margin: 1rem auto;
+      padding: 1rem;
+      color: #7a1d1d;
+      background: #fff1f1;
+      border: 1px solid #f4b8b8;
+    }
+
+    /* PAGE HERO */
+    .page-hero {
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      background: var(--charcoal);
+    }
+
+    .page-hero::before {
+      position: absolute;
+      top: -14rem;
+      right: -11rem;
+      width: 32rem;
+      height: 32rem;
+      content: "";
+      border: 5rem solid rgba(0, 166, 80, 0.08);
+      border-radius: 50%;
+    }
+
+    .page-hero__inner {
+      position: relative;
+      z-index: 1;
+      min-height: 34rem;
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      align-items: stretch;
+    }
+
+    .page-hero__content {
+      align-self: center;
+      padding: clamp(5rem, 10vw, 8rem) clamp(2rem, 6vw, 5rem) clamp(5rem, 10vw, 8rem) max(1rem, calc((100vw - 1180px) / 2));
+    }
+
+    .breadcrumb {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.55rem;
+      margin-bottom: 1.5rem;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .breadcrumb a {
+      color: rgba(255, 255, 255, 0.75);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--white);
+    }
+
+    .page-hero h1 {
+      margin-bottom: 1.25rem;
+      font-size: clamp(3.2rem, 7vw, 6.4rem);
+      letter-spacing: -0.065em;
+    }
+
+    .page-hero h1 span {
+      color: var(--brand-green);
+    }
+
+    .page-hero__text {
+      max-width: 36rem;
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1.08rem;
+    }
+
+    .page-hero__image {
+      min-height: 34rem;
+      background-color: #29332f;
+      background-image:
+        linear-gradient(90deg, rgba(23, 25, 24, 0.45), transparent 35%),
+        url("assets/images/about/about-hero-commercial-site.webp");
+      background-position: center;
+      background-size: cover;
+    }
+
+    /* INTRODUCTION */
+    .introduction__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+      gap: clamp(3rem, 9vw, 8rem);
+      align-items: start;
+    }
+
+    .introduction__label {
+      padding-top: 0.5rem;
+    }
+
+    .introduction__copy h2 {
+      max-width: 50rem;
+      margin-bottom: 1.7rem;
+      font-size: clamp(2.2rem, 4.8vw, 4.3rem);
+      letter-spacing: -0.055em;
+    }
+
+    .introduction__copy h2 span {
+      color: var(--brand-green);
+    }
+
+    .introduction__columns {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      color: var(--grey);
+    }
+
+    .introduction__columns p {
+      margin-bottom: 0;
+    }
+
+    /* IMAGE + EQUIPMENT STORY */
+    .equipment-story {
+      color: var(--white);
+      background: var(--forest-deep);
+    }
+
+    .equipment-story__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+      align-items: stretch;
+      gap: clamp(2.5rem, 7vw, 6rem);
+    }
+
+    .equipment-story__image-wrap {
+      position: relative;
+      min-height: 39rem;
+    }
+
+    .equipment-story__image {
+      position: absolute;
+      inset: 0 2rem 2rem 0;
+      background-color: #202824;
+      background-image:
+        linear-gradient(180deg, transparent 58%, rgba(3, 57, 44, 0.72)),
+        url("assets/images/about/about-commercial-equipment.webp");
+      background-position: center;
+      background-size: cover;
+    }
+
+    .equipment-story__image-wrap::after {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: calc(100% - 2rem);
+      height: calc(100% - 2rem);
+      z-index: 0;
+      content: "";
+      border: 1px solid rgba(0, 166, 80, 0.65);
+    }
+
+    .equipment-story__image {
+      z-index: 1;
+    }
+
+    .equipment-story__content {
+      align-self: center;
+    }
+
+    .equipment-story .eyebrow {
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .equipment-story .section-title {
+      margin-bottom: 1.5rem;
+    }
+
+    .equipment-story__content > p {
+      margin-bottom: 2rem;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 1.05rem;
+    }
+
+    .equipment-points {
+      display: grid;
+      gap: 0;
+      margin: 0 0 2.2rem;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .equipment-points li {
+      display: grid;
+      grid-template-columns: 1.4rem 1fr;
+      gap: 0.8rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .equipment-points svg {
+      width: 1.2rem;
+      margin-top: 0.2rem;
+      color: var(--brand-green);
+    }
+
+    /* CAPABILITIES */
+    .capabilities {
+      background: var(--off-white);
+    }
+
+    .capabilities__heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .capabilities__heading .section-title {
+      margin-bottom: 0;
+    }
+
+    .capability-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .capability-card {
+      min-height: 24rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(1.75rem, 3vw, 2.5rem);
+      color: var(--charcoal);
+      background: var(--white);
+      border: 1px solid var(--line);
+      text-decoration: none;
+      transition: color 200ms ease, background 200ms ease, transform 200ms ease;
+    }
+
+    .capability-card:hover {
+      color: var(--white);
+      background: var(--forest);
+      border-color: var(--forest);
+      box-shadow: var(--shadow);
+      transform: translateY(-0.4rem);
+    }
+
+    .capability-card__number {
+      color: var(--brand-green);
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+    }
+
+    .capability-card h3 {
+      margin-bottom: 0.8rem;
+      font-size: clamp(1.6rem, 3vw, 2.15rem);
+      letter-spacing: -0.04em;
+    }
+
+    .capability-card p {
+      margin-bottom: 1.4rem;
+      color: var(--grey);
+      transition: color 200ms ease;
+    }
+
+    .capability-card:hover p {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .capability-card__arrow {
+      width: 2.7rem;
+      height: 2.7rem;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: var(--charcoal);
+      border-radius: 50%;
+    }
+
+    .capability-card:hover .capability-card__arrow {
+      background: var(--brand-green);
+    }
+
+    .capability-card__arrow svg {
+      width: 1rem;
+    }
+
+    /* APPROACH */
+    .approach__grid {
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      align-items: start;
+      gap: clamp(3rem, 9vw, 8rem);
+    }
+
+    .approach__intro {
+      position: sticky;
+      top: 3rem;
+    }
+
+    .approach-list {
+      counter-reset: approach;
+      border-top: 1px solid var(--line);
+    }
+
+    .approach-item {
+      counter-increment: approach;
+      display: grid;
+      grid-template-columns: 4rem 1fr;
+      gap: 1.5rem;
+      padding: 2.25rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .approach-item::before {
+      content: "0" counter(approach);
+      color: var(--brand-green);
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+    }
+
+    .approach-item h3 {
+      margin-bottom: 0.65rem;
+      font-size: 1.35rem;
+    }
+
+    .approach-item p {
+      margin: 0;
+      color: var(--grey);
+    }
+
+    /* TEAM IMAGE BAND */
+    .work-band {
+      position: relative;
+      min-height: 35rem;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      color: var(--white);
+      background-color: #28302c;
+      background-image:
+        linear-gradient(180deg, rgba(23, 25, 24, 0.05) 25%, rgba(5, 15, 11, 0.92) 100%),
+        url("assets/images/about/about-team-at-work.webp");
+      background-position: center;
+      background-size: cover;
+    }
+
+    .work-band__content {
+      padding-bottom: clamp(3rem, 7vw, 5rem);
+    }
+
+    .work-band__content h2 {
+      max-width: 45rem;
+      margin-bottom: 0.8rem;
+      font-size: clamp(2.2rem, 5vw, 4.5rem);
+      letter-spacing: -0.055em;
+    }
+
+    .work-band__content p {
+      max-width: 40rem;
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 1.05rem;
+    }
+
+    /* CTA */
+    .cta {
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      background: var(--brand-green);
+    }
+
+    .cta::after {
+      position: absolute;
+      right: -8rem;
+      bottom: -12rem;
+      width: 30rem;
+      height: 30rem;
+      content: "";
+      border: 4rem solid rgba(255, 255, 255, 0.08);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .cta__inner {
+      position: relative;
+      z-index: 1;
+      min-height: 23rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+    }
+
+    .cta h2 {
+      max-width: 46rem;
+      margin-bottom: 0.75rem;
+      font-size: clamp(2.4rem, 5vw, 4.7rem);
+      letter-spacing: -0.055em;
+    }
+
+    .cta p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 1.05rem;
+    }
+
+    .cta .button {
+      flex: 0 0 auto;
+      background: var(--charcoal);
+    }
+
+    .cta .button:hover {
+      background: var(--forest-deep);
+    }
+
+    /* REVEAL EFFECT */
+    .reveal {
+      opacity: 0;
+      transform: translateY(1.2rem);
+      transition: opacity 600ms ease, transform 600ms ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .page-hero__inner,
+      .introduction__grid,
+      .equipment-story__grid,
+      .approach__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .page-hero__content {
+        padding: 5.5rem max(1rem, calc((100vw - 1180px) / 2));
+      }
+
+      .page-hero__image {
+        min-height: 28rem;
+      }
+
+      .introduction__columns {
+        grid-template-columns: 1fr;
+      }
+
+      .equipment-story__image-wrap {
+        min-height: 32rem;
+      }
+
+      .capability-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .capability-card {
+        min-height: 19rem;
+      }
+
+      .approach__intro {
+        position: static;
+      }
+
+      .cta__inner {
+        min-height: 27rem;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .capabilities__heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .page-hero h1 {
+        font-size: clamp(3.2rem, 15vw, 5rem);
+      }
+
+      .work-band {
+        min-height: 30rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .section {
+        padding: 4.5rem 0;
+      }
+
+      .equipment-story__image-wrap {
+        min-height: 25rem;
+      }
+
+      .approach-item {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+
+      .cta .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body class="menu-loading">
+  <div id="header-placeholder" aria-live="polite"></div>
+
+  <main id="main-content">
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="page-hero__inner">
+        <div class="page-hero__content">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">About Us</span>
+          </nav>
+          <h1 id="page-title">Built for the <span>work.</span></h1>
+          <p class="page-hero__text">Diamond Concrete Works Ltd. brings commercial capability, purpose-built equipment and close attention to the finished surface.</p>
+        </div>
+        <div class="page-hero__image" role="img" aria-label="Diamond Concrete Works commercial exterior construction project"></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="introduction-title">
+      <div class="container introduction__grid">
+        <div class="introduction__label reveal">
+          <span class="eyebrow">About Diamond</span>
+        </div>
+        <div class="introduction__copy reveal">
+          <h2 id="introduction-title">Concrete work shaped by <span>precision and purpose.</span></h2>
+          <div class="introduction__columns">
+            <p>Diamond Concrete Works Ltd. focuses on commercial slabs, exterior site work and residential concrete. Our scope includes suspended slabs, slab on grade, structural slabs, floors, sidewalks, driveways, ramps, steps and curbs.</p>
+            <p>Every surface has a job to do. We approach each project with the equipment, preparation and finishing process needed for its intended use, desired appearance and project requirements.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section equipment-story" aria-labelledby="equipment-title">
+      <div class="container equipment-story__grid">
+        <div class="equipment-story__image-wrap reveal">
+          <div class="equipment-story__image" role="img" aria-label="Commercial concrete finishing equipment"></div>
+        </div>
+        <div class="equipment-story__content reveal">
+          <span class="eyebrow">Commercial capability</span>
+          <h2 class="section-title" id="equipment-title">Equipment selected for demanding slabs.</h2>
+          <p>For commercial floors, flatness and levelness can affect equipment operation, installation work and the long-term use of a building. Our concrete-finishing equipment supports the FF/FL objectives established for the project.</p>
+          <ul class="equipment-points">
+            <li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-9"/></svg><span>Commercial slab placement and finishing equipment</span></li>
+            <li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-9"/></svg><span>Support for project-specific floor flatness and levelness goals</span></li>
+            <li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-9"/></svg><span>Careful coordination from preparation through final finish</span></li>
+          </ul>
+          <a class="button" href="commercial-concrete.html">Commercial Concrete <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section capabilities" aria-labelledby="capabilities-title">
+      <div class="container">
+        <div class="capabilities__heading reveal">
+          <div>
+            <span class="eyebrow">What we build</span>
+            <h2 class="section-title" id="capabilities-title">One standard across every category.</h2>
+          </div>
+          <a class="text-link" href="services.html">View all services <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></a>
+        </div>
+
+        <div class="capability-grid reveal">
+          <a class="capability-card" href="commercial-concrete.html">
+            <span class="capability-card__number">01 / COMMERCIAL</span>
+            <div>
+              <h3>Commercial Concrete</h3>
+              <p>Commercial slabs, suspended slabs, slab on grade and structural slab work.</p>
+              <span class="capability-card__arrow"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 15 15 5M7 5h8v8"/></svg></span>
+            </div>
+          </a>
+
+          <a class="capability-card" href="exterior-site-work.html">
+            <span class="capability-card__number">02 / EXTERIOR</span>
+            <div>
+              <h3>Exterior Site Work</h3>
+              <p>Sidewalks, ramps, steps, curbs and barrier curbs built for functional spaces.</p>
+              <span class="capability-card__arrow"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 15 15 5M7 5h8v8"/></svg></span>
+            </div>
+          </a>
+
+          <a class="capability-card" href="residential-concrete.html">
+            <span class="capability-card__number">03 / RESIDENTIAL</span>
+            <div>
+              <h3>Residential Concrete</h3>
+              <p>Basement floors, garage floors, sidewalks and driveways for residential properties.</p>
+              <span class="capability-card__arrow"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 15 15 5M7 5h8v8"/></svg></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="approach-title">
+      <div class="container approach__grid">
+        <div class="approach__intro reveal">
+          <span class="eyebrow">Our approach</span>
+          <h2 class="section-title" id="approach-title">Quality starts before the pour.</h2>
+          <p class="section-intro">The final surface depends on the decisions, preparation and coordination that come before it.</p>
+        </div>
+
+        <div class="approach-list reveal">
+          <article class="approach-item">
+            <div><h3>Understand the project</h3><p>We begin with the intended use, site conditions, concrete scope and finish requirements.</p></div>
+          </article>
+          <article class="approach-item">
+            <div><h3>Prepare and coordinate</h3><p>Formwork, reinforcement, access, equipment and placement activities are aligned around the planned pour.</p></div>
+          </article>
+          <article class="approach-item">
+            <div><h3>Place and finish</h3><p>The team focuses on controlled placement and the finishing method appropriate for the surface.</p></div>
+          </article>
+          <article class="approach-item">
+            <div><h3>Review the result</h3><p>The completed work is considered against the project requirements and intended performance.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="work-band" aria-labelledby="work-title">
+      <div class="container work-band__content reveal">
+        <h2 id="work-title">Capability you can see on site.</h2>
+        <p>From reinforcing and preparation to placement and finishing, our work is built around the demands of the project.</p>
+      </div>
+    </section>
+
+    <section class="cta" aria-labelledby="cta-title">
+      <div class="container cta__inner">
+        <div class="reveal">
+          <h2 id="cta-title">Let’s discuss your concrete scope.</h2>
+          <p>Tell us about your commercial, exterior or residential project.</p>
+        </div>
+        <a class="button reveal" href="contact.html">Request a Quote <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder" aria-live="polite"></div>
+
+  <script>
+    /**
+     * Loads the shared header and footer, including their internal scripts.
+     * Run through GitHub Pages or a local server rather than file://.
+     */
+    async function loadComponent(targetId, fileName) {
+      const target = document.getElementById(targetId);
+      if (!target) return;
+
+      try {
+        const response = await fetch(fileName);
+        if (!response.ok) throw new Error(`Unable to load ${fileName}`);
+
+        target.innerHTML = await response.text();
+
+        target.querySelectorAll('script').forEach((oldScript) => {
+          const newScript = document.createElement('script');
+          Array.from(oldScript.attributes).forEach((attribute) => {
+            newScript.setAttribute(attribute.name, attribute.value);
+          });
+          newScript.textContent = oldScript.textContent;
+          oldScript.replaceWith(newScript);
+        });
+      } catch (error) {
+        console.error(error);
+        target.innerHTML = `<div class="component-error">${fileName} could not be loaded. Preview the website through a local server or GitHub Pages.</div>`;
+      }
+    }
+
+    async function initializePage() {
+      await Promise.all([
+        loadComponent('header-placeholder', 'header.html'),
+        loadComponent('footer-placeholder', 'footer.html')
+      ]);
+
+      document.body.classList.remove('menu-loading');
+
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const revealElements = document.querySelectorAll('.reveal');
+
+      if (reducedMotion || !('IntersectionObserver' in window)) {
+        revealElements.forEach((element) => element.classList.add('is-visible'));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      revealElements.forEach((element) => observer.observe(element));
+    }
+
+    document.addEventListener('DOMContentLoaded', initializePage);
+  </script>
+</body>
+</html>
