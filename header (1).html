@@ -1,0 +1,495 @@
+<!--
+  DIAMOND CONCRETE WORKS LTD. - SHARED HEADER
+  This file contains its own HTML, CSS and JavaScript.
+  It is loaded into each page by the loadComponent() function.
+-->
+<style>
+  :root {
+    --dc-green: #00a650;
+    --dc-green-dark: #064e3b;
+    --dc-charcoal: #171918;
+    --dc-grey: #727875;
+    --dc-light: #e8ebe9;
+    --dc-white: #ffffff;
+  }
+
+  .site-header,
+  .site-header * {
+    box-sizing: border-box;
+  }
+
+  .skip-link {
+    position: fixed;
+    top: -5rem;
+    left: 1rem;
+    z-index: 9999;
+    padding: 0.8rem 1rem;
+    color: var(--dc-white);
+    background: var(--dc-green-dark);
+    border-radius: 0.25rem;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .skip-link:focus {
+    top: 1rem;
+  }
+
+  .site-header {
+    position: relative;
+    z-index: 1000;
+    width: 100%;
+    color: var(--dc-charcoal);
+    background: rgba(255, 255, 255, 0.97);
+    border-bottom: 1px solid rgba(23, 25, 24, 0.1);
+  }
+
+  .header-topbar {
+    color: rgba(255, 255, 255, 0.88);
+    background: var(--dc-charcoal);
+    font-size: 0.82rem;
+  }
+
+  .header-topbar__inner,
+  .header-main__inner {
+    width: min(1180px, calc(100% - 2rem));
+    margin-inline: auto;
+  }
+
+  .header-topbar__inner {
+    min-height: 2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+  }
+
+  .header-topbar a,
+  .header-topbar address {
+    color: inherit;
+    font-style: normal;
+    text-decoration: none;
+  }
+
+  .header-topbar a:hover {
+    color: var(--dc-white);
+  }
+
+  .header-topbar__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .header-topbar__item svg {
+    width: 0.95rem;
+    height: 0.95rem;
+    color: var(--dc-green);
+  }
+
+  .header-main {
+    min-height: 5.25rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .header-main__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .brand-link {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    color: var(--dc-charcoal);
+    text-decoration: none;
+  }
+
+  .brand-logo {
+    width: auto;
+    height: 4rem;
+    object-fit: contain;
+  }
+
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.25rem;
+  }
+
+  .desktop-nav__link,
+  .dropdown-toggle {
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.7rem 0.8rem;
+    color: var(--dc-charcoal);
+    background: transparent;
+    border: 0;
+    font: inherit;
+    font-size: 0.91rem;
+    font-weight: 750;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .desktop-nav__link:hover,
+  .desktop-nav__link.is-active,
+  .dropdown-toggle:hover,
+  .dropdown-toggle.is-active {
+    color: var(--dc-green-dark);
+  }
+
+  .desktop-nav__link.is-active,
+  .dropdown-toggle.is-active {
+    box-shadow: inset 0 -2px var(--dc-green);
+  }
+
+  .nav-dropdown {
+    position: relative;
+  }
+
+  .dropdown-toggle svg {
+    width: 0.85rem;
+    transition: transform 180ms ease;
+  }
+
+  .nav-dropdown.is-open .dropdown-toggle svg {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 0.75rem);
+    left: 50%;
+    width: 16.5rem;
+    padding: 0.6rem;
+    visibility: hidden;
+    opacity: 0;
+    transform: translate(-50%, -0.4rem);
+    color: var(--dc-charcoal);
+    background: var(--dc-white);
+    border: 1px solid rgba(23, 25, 24, 0.1);
+    border-radius: 0.65rem;
+    box-shadow: 0 1.25rem 3rem rgba(6, 78, 59, 0.16);
+    transition: opacity 180ms ease, transform 180ms ease, visibility 180ms;
+  }
+
+  .nav-dropdown:hover .dropdown-menu,
+  .nav-dropdown:focus-within .dropdown-menu,
+  .nav-dropdown.is-open .dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  .dropdown-menu a {
+    display: block;
+    padding: 0.78rem 0.85rem;
+    color: var(--dc-charcoal);
+    border-radius: 0.35rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .dropdown-menu a:hover,
+  .dropdown-menu a.is-active {
+    color: var(--dc-green-dark);
+    background: rgba(0, 166, 80, 0.09);
+  }
+
+  .header-quote {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.85rem;
+    padding: 0.75rem 1.15rem;
+    color: var(--dc-white);
+    background: var(--dc-green-dark);
+    border: 1px solid var(--dc-green-dark);
+    border-radius: 0.2rem;
+    font-size: 0.88rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    transition: transform 180ms ease, background 180ms ease;
+  }
+
+  .header-quote:hover {
+    background: #053d30;
+    transform: translateY(-2px);
+  }
+
+  .mobile-menu-button {
+    width: 3rem;
+    height: 3rem;
+    display: none;
+    place-items: center;
+    padding: 0;
+    color: var(--dc-charcoal);
+    background: transparent;
+    border: 1px solid rgba(23, 25, 24, 0.16);
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+
+  .mobile-menu-button span,
+  .mobile-menu-button::before,
+  .mobile-menu-button::after {
+    width: 1.3rem;
+    height: 2px;
+    display: block;
+    content: "";
+    background: currentColor;
+    transition: transform 180ms ease, opacity 180ms ease;
+  }
+
+  .mobile-menu-button span {
+    margin: 0.3rem 0;
+  }
+
+  .mobile-menu-button[aria-expanded="true"] span {
+    opacity: 0;
+  }
+
+  .mobile-menu-button[aria-expanded="true"]::before {
+    transform: translateY(0.44rem) rotate(45deg);
+  }
+
+  .mobile-menu-button[aria-expanded="true"]::after {
+    transform: translateY(-0.44rem) rotate(-45deg);
+  }
+
+  .mobile-nav {
+    display: none;
+  }
+
+  @media (max-width: 980px) {
+    .desktop-nav {
+      display: none;
+    }
+
+    .mobile-menu-button {
+      display: grid;
+    }
+
+    .mobile-nav.is-open {
+      display: block;
+      padding: 0 1rem 1.2rem;
+      border-top: 1px solid rgba(23, 25, 24, 0.08);
+    }
+
+    .mobile-nav__inner {
+      width: min(100%, 1180px);
+      margin-inline: auto;
+      padding-top: 0.75rem;
+    }
+
+    .mobile-nav a,
+    .mobile-services summary {
+      display: block;
+      padding: 0.85rem 0.35rem;
+      color: var(--dc-charcoal);
+      border-bottom: 1px solid rgba(23, 25, 24, 0.08);
+      font-size: 1rem;
+      font-weight: 750;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .mobile-nav a.is-active,
+    .mobile-nav a:hover,
+    .mobile-services summary:hover {
+      color: var(--dc-green-dark);
+    }
+
+    .mobile-services summary {
+      list-style: none;
+    }
+
+    .mobile-services summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .mobile-services summary::after {
+      float: right;
+      content: "+";
+      color: var(--dc-green);
+    }
+
+    .mobile-services[open] summary::after {
+      content: "−";
+    }
+
+    .mobile-services__links {
+      padding-left: 1rem;
+      background: rgba(0, 166, 80, 0.05);
+    }
+
+    .mobile-nav .header-quote {
+      display: flex;
+      margin-top: 1rem;
+      color: var(--dc-white);
+      border-bottom: 0;
+    }
+  }
+
+  @media (max-width: 650px) {
+    .header-topbar__inner {
+      justify-content: center;
+    }
+
+    .header-topbar__item:first-child {
+      display: none;
+    }
+
+    .header-main {
+      min-height: 4.5rem;
+    }
+
+    .brand-logo {
+      height: 3.35rem;
+    }
+  }
+</style>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="site-header" id="site-header">
+  <div class="header-topbar">
+    <div class="header-topbar__inner">
+      <address class="header-topbar__item">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        16317 132 Ave NW, Edmonton, AB
+      </address>
+      <a class="header-topbar__item" href="mailto:diamondconcreteworks@hotmail.com">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        diamondconcreteworks@hotmail.com
+      </a>
+    </div>
+  </div>
+
+  <div class="header-main">
+    <div class="header-main__inner">
+      <a class="brand-link" href="index.html" aria-label="Diamond Concrete Works Ltd. home">
+        <!-- Replace this file with the transparent PNG version of the supplied logo. -->
+        <img class="brand-logo" src="assets/images/diamond-concrete-logo.png" alt="Diamond Concrete Works Ltd.">
+      </a>
+
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a class="desktop-nav__link" data-page="index.html" href="index.html">Home</a>
+        <a class="desktop-nav__link" data-page="about.html" href="about.html">About</a>
+
+        <div class="nav-dropdown">
+          <button class="dropdown-toggle" type="button" aria-expanded="false" aria-haspopup="true">
+            Services
+            <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 7.5 5 5 5-5"/></svg>
+          </button>
+          <div class="dropdown-menu">
+            <a data-page="services.html" href="services.html">All Services</a>
+            <a data-page="commercial-concrete.html" href="commercial-concrete.html">Commercial Concrete</a>
+            <a data-page="residential-concrete.html" href="residential-concrete.html">Residential Concrete</a>
+            <a data-page="exterior-site-work.html" href="exterior-site-work.html">Exterior Site Work</a>
+            <a data-page="concrete-finishes.html" href="concrete-finishes.html">Concrete Finishes</a>
+          </div>
+        </div>
+
+        <a class="desktop-nav__link" data-page="projects.html" href="projects.html">Projects</a>
+        <a class="desktop-nav__link" data-page="contact.html" href="contact.html">Contact</a>
+        <a class="header-quote" href="contact.html">Request a Quote</a>
+      </nav>
+
+      <button class="mobile-menu-button" type="button" aria-label="Open navigation menu" aria-controls="mobile-nav" aria-expanded="false">
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <div class="mobile-nav__inner">
+      <a data-page="index.html" href="index.html">Home</a>
+      <a data-page="about.html" href="about.html">About</a>
+      <details class="mobile-services">
+        <summary>Services</summary>
+        <div class="mobile-services__links">
+          <a data-page="services.html" href="services.html">All Services</a>
+          <a data-page="commercial-concrete.html" href="commercial-concrete.html">Commercial Concrete</a>
+          <a data-page="residential-concrete.html" href="residential-concrete.html">Residential Concrete</a>
+          <a data-page="exterior-site-work.html" href="exterior-site-work.html">Exterior Site Work</a>
+          <a data-page="concrete-finishes.html" href="concrete-finishes.html">Concrete Finishes</a>
+        </div>
+      </details>
+      <a data-page="projects.html" href="projects.html">Projects</a>
+      <a data-page="contact.html" href="contact.html">Contact</a>
+      <a class="header-quote" href="contact.html">Request a Quote</a>
+    </div>
+  </nav>
+</header>
+
+<script>
+  (() => {
+    const menuButton = document.querySelector('.mobile-menu-button');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const dropdown = document.querySelector('.nav-dropdown');
+    const dropdownButton = document.querySelector('.dropdown-toggle');
+
+    const closeMobileMenu = () => {
+      if (!menuButton || !mobileNav) return;
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.setAttribute('aria-label', 'Open navigation menu');
+      mobileNav.classList.remove('is-open');
+    };
+
+    menuButton?.addEventListener('click', () => {
+      const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+      mobileNav?.classList.toggle('is-open', !isOpen);
+    });
+
+    dropdownButton?.addEventListener('click', () => {
+      const isOpen = dropdown?.classList.toggle('is-open') ?? false;
+      dropdownButton.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    document.addEventListener('click', (event) => {
+      if (dropdown && !dropdown.contains(event.target)) {
+        dropdown.classList.remove('is-open');
+        dropdownButton?.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeMobileMenu();
+        dropdown?.classList.remove('is-open');
+        dropdownButton?.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    mobileNav?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('[data-page]').forEach((link) => {
+      if (link.dataset.page === currentPage) {
+        link.classList.add('is-active');
+        link.setAttribute('aria-current', 'page');
+        if (link.closest('.dropdown-menu')) {
+          dropdownButton?.classList.add('is-active');
+        }
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 980) closeMobileMenu();
+    });
+  })();
+</script>
