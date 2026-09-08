@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Diamond Concrete Works Ltd. to discuss commercial, residential or exterior concrete work in Edmonton, Alberta.">
+  <meta name="theme-color" content="#064e3b">
+  <title>Contact &amp; Request a Quote | Diamond Concrete Works Ltd.</title>
+
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green: #00a650;
+      --green-hover: #008f45;
+      --forest: #064e3b;
+      --deep: #03392c;
+      --charcoal: #171918;
+      --grey: #727875;
+      --concrete: #e8ebe9;
+      --off-white: #f7f7f3;
+      --white: #ffffff;
+      --error: #a73333;
+      --line: rgba(23, 25, 24, 0.13);
+      --content: min(1180px, calc(100% - 2rem));
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--charcoal);
+      background: var(--off-white);
+      font-family: "DM Sans", system-ui, sans-serif;
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.menu-loading { padding-top: 7.65rem; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: "Manrope", system-ui, sans-serif; line-height: 1.08; }
+    button, input, select, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 3px solid rgba(0, 166, 80, 0.4);
+      outline-offset: 3px;
+    }
+
+    .container { width: var(--content); margin-inline: auto; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 1rem;
+      color: var(--forest);
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before { width: 2.25rem; height: 2px; content: ""; background: var(--green); }
+
+    .component-error {
+      width: var(--content);
+      margin: 1rem auto;
+      padding: 1rem;
+      color: #7a1d1d;
+      background: #fff1f1;
+      border: 1px solid #f4b8b8;
+    }
+
+    /* PAGE INTRODUCTION */
+    .contact-hero {
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 86% 24%, rgba(0, 166, 80, 0.22), transparent 20rem),
+        linear-gradient(115deg, rgba(0, 166, 80, 0.08), transparent 48%),
+        var(--charcoal);
+    }
+
+    .contact-hero::after {
+      position: absolute;
+      right: -8rem;
+      bottom: -15rem;
+      width: 37rem;
+      height: 37rem;
+      content: "";
+      border: 5rem solid rgba(255, 255, 255, 0.035);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .contact-hero__inner {
+      position: relative;
+      z-index: 1;
+      padding: clamp(5rem, 9vw, 8rem) 0 clamp(4.5rem, 8vw, 7rem);
+    }
+
+    .breadcrumb {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.55rem;
+      margin-bottom: 1.5rem;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .breadcrumb a { color: rgba(255, 255, 255, 0.75); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--white); }
+
+    .contact-hero h1 {
+      max-width: 61rem;
+      margin-bottom: 1.35rem;
+      font-size: clamp(3.4rem, 8vw, 7.2rem);
+      letter-spacing: -0.075em;
+    }
+
+    .contact-hero h1 span { color: var(--green); }
+    .contact-hero__text { max-width: 43rem; margin-bottom: 0; color: rgba(255, 255, 255, 0.7); font-size: 1.1rem; }
+
+    /* CONTACT AREA */
+    .contact-section { padding: clamp(4.5rem, 9vw, 8rem) 0; }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: minmax(19rem, 0.72fr) minmax(0, 1.28fr);
+      gap: clamp(2rem, 7vw, 6rem);
+      align-items: start;
+    }
+
+    .contact-details {
+      position: sticky;
+      top: 2rem;
+      padding: clamp(2rem, 4vw, 3rem);
+      color: var(--white);
+      background: var(--forest);
+      box-shadow: 1rem 1rem 0 rgba(0, 166, 80, 0.12);
+    }
+
+    .contact-details .eyebrow { color: rgba(255, 255, 255, 0.72); }
+
+    .contact-details h2 {
+      margin-bottom: 1rem;
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      letter-spacing: -0.05em;
+    }
+
+    .contact-details__intro { margin-bottom: 2.2rem; color: rgba(255, 255, 255, 0.68); }
+
+    .contact-list { display: grid; gap: 0; margin: 0; }
+
+    .contact-item {
+      display: grid;
+      grid-template-columns: 2.8rem 1fr;
+      gap: 1rem;
+      padding: 1.45rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .contact-item:last-child { border-bottom: 1px solid rgba(255, 255, 255, 0.14); }
+
+    .contact-item__icon {
+      width: 2.8rem;
+      height: 2.8rem;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: var(--green);
+      border-radius: 50%;
+    }
+
+    .contact-item__icon svg { width: 1.15rem; }
+
+    .contact-item dt {
+      margin-bottom: 0.25rem;
+      color: rgba(255, 255, 255, 0.56);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .contact-item dd { margin: 0; overflow-wrap: anywhere; }
+    .contact-item a, .contact-item address { color: var(--white); font-style: normal; text-decoration: none; }
+    .contact-item a:hover { color: #85e5b1; }
+
+    .contact-details__note {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      margin: 1.6rem 0 0;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.88rem;
+    }
+
+    .contact-details__note svg { width: 1rem; flex: 0 0 auto; margin-top: 0.25rem; color: var(--green); }
+
+    /* FORM */
+    .quote-panel { padding: clamp(2rem, 5vw, 4rem); background: var(--white); border: 1px solid var(--line); }
+
+    .quote-panel__heading { margin-bottom: 2.5rem; }
+
+    .quote-panel__heading h2 {
+      margin-bottom: 0.85rem;
+      font-size: clamp(2rem, 4.5vw, 3.7rem);
+      letter-spacing: -0.055em;
+    }
+
+    .quote-panel__heading p { max-width: 41rem; margin-bottom: 0; color: var(--grey); }
+
+    .quote-form { display: grid; gap: 1.35rem; }
+    .form-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+    .form-field { min-width: 0; }
+
+    .form-field label, .form-field legend {
+      display: block;
+      margin-bottom: 0.48rem;
+      color: var(--charcoal);
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 0.87rem;
+      font-weight: 800;
+    }
+
+    .required { color: var(--green); }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      width: 100%;
+      color: var(--charcoal);
+      background: var(--off-white);
+      border: 1px solid rgba(23, 25, 24, 0.18);
+      border-radius: 0.15rem;
+      transition: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    .form-field input, .form-field select { min-height: 3.45rem; padding: 0.8rem 0.95rem; }
+    .form-field textarea { min-height: 10rem; padding: 0.9rem 0.95rem; line-height: 1.55; resize: vertical; }
+
+    .form-field input::placeholder, .form-field textarea::placeholder { color: #959b98; }
+
+    .form-field input:hover,
+    .form-field select:hover,
+    .form-field textarea:hover { border-color: rgba(6, 78, 59, 0.42); }
+
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      outline: none;
+      background: var(--white);
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(0, 166, 80, 0.11);
+    }
+
+    .form-field input[aria-invalid="true"],
+    .form-field select[aria-invalid="true"],
+    .form-field textarea[aria-invalid="true"] { border-color: var(--error); }
+
+    .field-help { margin: 0.4rem 0 0; color: var(--grey); font-size: 0.78rem; }
+    .field-error { min-height: 1.15rem; margin: 0.35rem 0 0; color: var(--error); font-size: 0.8rem; font-weight: 600; }
+
+    .contact-choice {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    .contact-choice legend { width: 100%; }
+
+    .choice-option { position: relative; }
+    .choice-option input { position: absolute; opacity: 0; pointer-events: none; }
+
+    .choice-option label {
+      min-height: 2.75rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      padding: 0.65rem 1rem;
+      color: var(--grey);
+      background: var(--off-white);
+      border: 1px solid rgba(23, 25, 24, 0.17);
+      cursor: pointer;
+      transition: color 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+
+    .choice-option input:checked + label { color: var(--white); background: var(--forest); border-color: var(--forest); }
+    .choice-option input:focus-visible + label { outline: 3px solid rgba(0, 166, 80, 0.4); outline-offset: 3px; }
+
+    .consent {
+      display: grid;
+      grid-template-columns: 1.15rem 1fr;
+      gap: 0.7rem;
+      align-items: start;
+      color: var(--grey);
+      font-size: 0.85rem;
+    }
+
+    .consent input { width: 1.05rem; height: 1.05rem; margin: 0.23rem 0 0; accent-color: var(--green); }
+    .consent label { cursor: pointer; }
+
+    .form-actions { display: flex; align-items: center; gap: 1.25rem; margin-top: 0.25rem; }
+
+    .submit-button {
+      min-height: 3.45rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.85rem 1.5rem;
+      color: var(--white);
+      background: var(--green);
+      border: 0;
+      border-radius: 0.2rem;
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 0.92rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 180ms ease, transform 180ms ease, opacity 180ms ease;
+    }
+
+    .submit-button:hover { background: var(--green-hover); transform: translateY(-2px); }
+    .submit-button:disabled { opacity: 0.65; cursor: wait; transform: none; }
+    .submit-button svg { width: 1rem; }
+
+    .form-privacy { max-width: 25rem; margin: 0; color: var(--grey); font-size: 0.76rem; line-height: 1.5; }
+
+    .form-status {
+      display: none;
+      margin: 0.5rem 0 0;
+      padding: 1rem 1.1rem;
+      border-left: 4px solid var(--green);
+      font-size: 0.91rem;
+    }
+
+    .form-status.is-visible { display: block; }
+    .form-status.is-success { color: var(--forest); background: rgba(0, 166, 80, 0.09); }
+    .form-status.is-error { color: #812424; background: #fff0f0; border-left-color: var(--error); }
+    .form-status a { color: inherit; font-weight: 800; }
+
+    .honeypot { position: absolute !important; left: -9999px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
+
+    /* EXPECTATIONS */
+    .next-steps { padding: clamp(4.5rem, 8vw, 7rem) 0; color: var(--white); background: var(--charcoal); }
+    .next-steps .eyebrow { color: rgba(255, 255, 255, 0.68); }
+
+    .next-steps__heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .next-steps__heading h2 {
+      max-width: 47rem;
+      margin-bottom: 0;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      letter-spacing: -0.055em;
+    }
+
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255, 255, 255, 0.15); }
+
+    .step {
+      min-height: 16rem;
+      padding: 2.2rem 2rem 2.2rem 0;
+      border-right: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .step + .step { padding-left: 2rem; }
+    .step:last-child { border-right: 0; }
+    .step__number { display: block; margin-bottom: 3rem; color: var(--green); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; }
+    .step h3 { margin-bottom: 0.65rem; font-size: 1.35rem; }
+    .step p { margin: 0; color: rgba(255, 255, 255, 0.62); }
+
+    .reveal { opacity: 0; transform: translateY(1.2rem); transition: opacity 600ms ease, transform 600ms ease; }
+    .reveal.is-visible { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    @media (max-width: 900px) {
+      .contact-layout { grid-template-columns: 1fr; }
+      .contact-details { position: static; box-shadow: 0.8rem 0.8rem 0 rgba(0, 166, 80, 0.12); }
+      .steps-grid { grid-template-columns: 1fr; }
+      .step, .step + .step { min-height: 0; padding: 2rem 0; border-right: 0; border-bottom: 1px solid rgba(255, 255, 255, 0.15); }
+      .step:last-child { border-bottom: 0; }
+      .step__number { margin-bottom: 1.5rem; }
+    }
+
+    @media (max-width: 700px) {
+      .contact-hero h1 { font-size: clamp(3.15rem, 15vw, 5.2rem); }
+      .form-row { grid-template-columns: 1fr; }
+      .form-actions, .next-steps__heading { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (max-width: 480px) {
+      .quote-panel { padding: 1.5rem; }
+      .contact-details { padding: 1.7rem; }
+      .contact-item { grid-template-columns: 2.5rem 1fr; }
+      .contact-item__icon { width: 2.5rem; height: 2.5rem; }
+      .submit-button { width: 100%; }
+    }
+  </style>
+</head>
+
+<body class="menu-loading">
+  <div id="header-placeholder" aria-live="polite"></div>
+
+  <main id="main-content">
+    <section class="contact-hero" aria-labelledby="page-title">
+      <div class="container contact-hero__inner">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a><span aria-hidden="true">/</span>
+          <span aria-current="page">Contact</span>
+        </nav>
+        <h1 id="page-title">Tell us about your <span>concrete project.</span></h1>
+        <p class="contact-hero__text">Share the project type, location and details. Diamond Concrete Works Ltd. will have the information needed to understand your request.</p>
+      </div>
+    </section>
+
+    <section class="contact-section" aria-labelledby="quote-title">
+      <div class="container contact-layout">
+        <aside class="contact-details reveal" aria-labelledby="contact-details-title">
+          <span class="eyebrow">Contact details</span>
+          <h2 id="contact-details-title">Start the conversation.</h2>
+          <p class="contact-details__intro">Contact us directly or complete the quote-request form with as much project information as possible.</p>
+
+          <dl class="contact-list">
+            <div class="contact-item">
+              <span class="contact-item__icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6.5 12 13l9-6.5M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/></svg></span>
+              <div><dt>Email</dt><dd><a href="mailto:diamondconcreteworks@hotmail.com">diamondconcreteworks@hotmail.com</a></dd></div>
+            </div>
+
+            <div class="contact-item">
+              <span class="contact-item__icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+              <div><dt>Address</dt><dd><a href="https://www.google.com/maps/search/?api=1&amp;query=16317+132+Ave+NW" target="_blank" rel="noopener noreferrer"><address>16317 132 Ave NW</address></a></dd></div>
+            </div>
+          </dl>
+
+          <p class="contact-details__note"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>Please include the project location, approximate size and required concrete work when possible.</p>
+        </aside>
+
+        <div class="quote-panel reveal">
+          <div class="quote-panel__heading">
+            <span class="eyebrow">Request a quote</span>
+            <h2 id="quote-title">Project information</h2>
+            <p>Fields marked with an asterisk are required. Your details will only be used to respond to this request.</p>
+          </div>
+
+          <!-- Add your form service URL to data-form-endpoint when it is ready. -->
+          <form class="quote-form" id="quote-form" data-form-endpoint="" novalidate>
+            <div class="honeypot" aria-hidden="true">
+              <label for="website">Leave this field empty</label>
+              <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="full-name">Full name <span class="required" aria-hidden="true">*</span></label>
+                <input id="full-name" name="name" type="text" autocomplete="name" required aria-describedby="full-name-error">
+                <p class="field-error" id="full-name-error" aria-live="polite"></p>
+              </div>
+
+              <div class="form-field">
+                <label for="email">Email address <span class="required" aria-hidden="true">*</span></label>
+                <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="email-error">
+                <p class="field-error" id="email-error" aria-live="polite"></p>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="phone">Phone number</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="phone-help phone-error">
+                <p class="field-help" id="phone-help">Required only when phone is your preferred contact method.</p>
+                <p class="field-error" id="phone-error" aria-live="polite"></p>
+              </div>
+
+              <div class="form-field">
+                <label for="project-address">Project address or area <span class="required" aria-hidden="true">*</span></label>
+                <input id="project-address" name="project_address" type="text" autocomplete="street-address" required aria-describedby="project-address-error">
+                <p class="field-error" id="project-address-error" aria-live="polite"></p>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="service">Service needed <span class="required" aria-hidden="true">*</span></label>
+              <select id="service" name="service" required aria-describedby="service-error">
+                <option value="">Select a service</option>
+                <option>Commercial slab</option>
+                <option>Suspended slab</option>
+                <option>Slab on grade</option>
+                <option>Structural slab</option>
+                <option>Basement or garage floor</option>
+                <option>Sidewalk or driveway</option>
+                <option>Ramp, steps or curbs</option>
+                <option>Decorative concrete finish</option>
+                <option>Other concrete work</option>
+              </select>
+              <p class="field-error" id="service-error" aria-live="polite"></p>
+            </div>
+
+            <fieldset class="form-field contact-choice" id="contact-choice">
+              <legend>Preferred contact method <span class="required" aria-hidden="true">*</span></legend>
+              <div class="choice-option"><input id="contact-email" name="preferred_contact" type="radio" value="Email" checked><label for="contact-email">Email</label></div>
+              <div class="choice-option"><input id="contact-phone" name="preferred_contact" type="radio" value="Phone"><label for="contact-phone">Phone</label></div>
+            </fieldset>
+
+            <div class="form-field">
+              <label for="project-details">Project details <span class="required" aria-hidden="true">*</span></label>
+              <textarea id="project-details" name="message" required minlength="20" placeholder="Describe the concrete work, approximate dimensions, project stage and preferred timing." aria-describedby="project-details-help project-details-error"></textarea>
+              <p class="field-help" id="project-details-help">Please provide at least 20 characters.</p>
+              <p class="field-error" id="project-details-error" aria-live="polite"></p>
+            </div>
+
+            <div>
+              <div class="consent">
+                <input id="consent" name="consent" type="checkbox" required aria-describedby="consent-error">
+                <label for="consent">I agree that Diamond Concrete Works Ltd. may use these details to respond to my request. <span class="required" aria-hidden="true">*</span></label>
+              </div>
+              <p class="field-error" id="consent-error" aria-live="polite"></p>
+            </div>
+
+            <div class="form-actions">
+              <button class="submit-button" id="submit-button" type="submit">Send Quote Request <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></button>
+              <p class="form-privacy">Do not include payment information or other sensitive personal information in this form.</p>
+            </div>
+
+            <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="next-steps" aria-labelledby="next-steps-title">
+      <div class="container">
+        <div class="next-steps__heading reveal">
+          <div><span class="eyebrow">What happens next</span><h2 id="next-steps-title">A clear start to the conversation.</h2></div>
+        </div>
+
+        <div class="steps-grid reveal">
+          <article class="step"><span class="step__number">01</span><h3>Send the details</h3><p>Provide the project type, location and a useful description of the concrete work.</p></article>
+          <article class="step"><span class="step__number">02</span><h3>Scope review</h3><p>Your information can be reviewed to identify the relevant service and any details that still need to be discussed.</p></article>
+          <article class="step"><span class="step__number">03</span><h3>Project conversation</h3><p>Diamond Concrete Works Ltd. can follow up using your selected contact method.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder" aria-live="polite"></div>
+
+  <script>
+    async function loadComponent(targetId, fileName) {
+      const target = document.getElementById(targetId);
+      if (!target) return;
+
+      try {
+        const response = await fetch(fileName);
+        if (!response.ok) throw new Error(`Unable to load ${fileName}`);
+        target.innerHTML = await response.text();
+
+        target.querySelectorAll('script').forEach((oldScript) => {
+          const newScript = document.createElement('script');
+          Array.from(oldScript.attributes).forEach((attribute) => newScript.setAttribute(attribute.name, attribute.value));
+          newScript.textContent = oldScript.textContent;
+          oldScript.replaceWith(newScript);
+        });
+      } catch (error) {
+        console.error(error);
+        target.innerHTML = `<div class="component-error">${fileName} could not be loaded. Preview the website through a local server or GitHub Pages.</div>`;
+      }
+    }
+
+    function initializeForm() {
+      const form = document.getElementById('quote-form');
+      const status = document.getElementById('form-status');
+      const submitButton = document.getElementById('submit-button');
+      const emailAddress = 'diamondconcreteworks@hotmail.com';
+
+      const fields = {
+        'full-name': {
+          input: document.getElementById('full-name'),
+          error: document.getElementById('full-name-error'),
+          message: 'Please enter your full name.'
+        },
+        email: {
+          input: document.getElementById('email'),
+          error: document.getElementById('email-error'),
+          message: 'Please enter a valid email address.'
+        },
+        'project-address': {
+          input: document.getElementById('project-address'),
+          error: document.getElementById('project-address-error'),
+          message: 'Please enter the project address or area.'
+        },
+        service: {
+          input: document.getElementById('service'),
+          error: document.getElementById('service-error'),
+          message: 'Please select the concrete service you need.'
+        },
+        'project-details': {
+          input: document.getElementById('project-details'),
+          error: document.getElementById('project-details-error'),
+          message: 'Please provide at least 20 characters about the project.'
+        },
+        consent: {
+          input: document.getElementById('consent'),
+          error: document.getElementById('consent-error'),
+          message: 'Please confirm that we may respond to your request.'
+        }
+      };
+
+      function validateField(field) {
+        const isValid = field.input.checkValidity();
+        field.input.setAttribute('aria-invalid', String(!isValid));
+        field.error.textContent = isValid ? '' : field.message;
+        return isValid;
+      }
+
+      Object.values(fields).forEach((field) => {
+        field.input.addEventListener('blur', () => validateField(field));
+        field.input.addEventListener('input', () => {
+          if (field.input.getAttribute('aria-invalid') === 'true') validateField(field);
+        });
+        field.input.addEventListener('change', () => {
+          if (field.input.getAttribute('aria-invalid') === 'true') validateField(field);
+        });
+      });
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        status.className = 'form-status';
+        status.textContent = '';
+
+        if (form.elements.website.value) return;
+
+        const preferredContact = form.querySelector('input[name="preferred_contact"]:checked')?.value;
+        const phone = document.getElementById('phone');
+        const phoneError = document.getElementById('phone-error');
+
+        if (preferredContact === 'Phone' && !phone.value.trim()) {
+          phone.setAttribute('aria-invalid', 'true');
+          phoneError.textContent = 'Please enter a phone number or select email as your contact method.';
+        } else {
+          phone.setAttribute('aria-invalid', 'false');
+          phoneError.textContent = '';
+        }
+
+        const validationResults = Object.values(fields).map(validateField);
+        const fieldsValid = validationResults.every(Boolean);
+        const phoneValid = preferredContact !== 'Phone' || Boolean(phone.value.trim());
+
+        if (!fieldsValid || !phoneValid) {
+          const firstInvalid = form.querySelector('[aria-invalid="true"]');
+          if (firstInvalid) firstInvalid.focus();
+          status.className = 'form-status is-visible is-error';
+          status.textContent = 'Please review the highlighted fields before sending your request.';
+          return;
+        }
+
+        const endpoint = form.dataset.formEndpoint.trim();
+        if (!endpoint) {
+          status.className = 'form-status is-visible is-success';
+          status.innerHTML = `The online form is being connected. Please email your project details directly to <a href="mailto:${emailAddress}">${emailAddress}</a>.`;
+          return;
+        }
+
+        submitButton.disabled = true;
+        submitButton.firstChild.textContent = 'Sending… ';
+
+        try {
+          const response = await fetch(endpoint, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { Accept: 'application/json' }
+          });
+
+          if (!response.ok) throw new Error('The quote request could not be sent.');
+
+          form.reset();
+          Object.values(fields).forEach((field) => {
+            field.input.removeAttribute('aria-invalid');
+            field.error.textContent = '';
+          });
+          status.className = 'form-status is-visible is-success';
+          status.textContent = 'Thank you. Your project information has been sent successfully.';
+        } catch (error) {
+          console.error(error);
+          status.className = 'form-status is-visible is-error';
+          status.innerHTML = `Your request could not be sent. Please email <a href="mailto:${emailAddress}">${emailAddress}</a> instead.`;
+        } finally {
+          submitButton.disabled = false;
+          submitButton.firstChild.textContent = 'Send Quote Request ';
+        }
+      });
+    }
+
+    async function initializePage() {
+      await Promise.all([
+        loadComponent('header-placeholder', 'header.html'),
+        loadComponent('footer-placeholder', 'footer.html')
+      ]);
+
+      document.body.classList.remove('menu-loading');
+      initializeForm();
+
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const revealElements = document.querySelectorAll('.reveal');
+      if (reducedMotion || !('IntersectionObserver' in window)) {
+        revealElements.forEach((element) => element.classList.add('is-visible'));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      revealElements.forEach((element) => observer.observe(element));
+    }
+
+    document.addEventListener('DOMContentLoaded', initializePage);
+  </script>
+</body>
+</html>
