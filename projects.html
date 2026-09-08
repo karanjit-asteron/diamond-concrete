@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="View concrete projects completed by Diamond Concrete Works Ltd., including commercial slabs, residential concrete and exterior site work.">
+  <meta name="theme-color" content="#064e3b">
+  <title>Projects | Diamond Concrete Works Ltd.</title>
+
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green: #00a650;
+      --forest: #064e3b;
+      --deep: #03392c;
+      --charcoal: #171918;
+      --grey: #727875;
+      --concrete: #e8ebe9;
+      --off-white: #f7f7f3;
+      --white: #ffffff;
+      --line: rgba(23, 25, 24, 0.12);
+      --content: min(1180px, calc(100% - 2rem));
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--charcoal);
+      background: var(--white);
+      font-family: "DM Sans", system-ui, sans-serif;
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.menu-loading { padding-top: 7.65rem; }
+    body.lightbox-open { overflow: hidden; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: "Manrope", system-ui, sans-serif; line-height: 1.08; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    button:focus-visible, a:focus-visible {
+      outline: 3px solid rgba(0, 166, 80, 0.48);
+      outline-offset: 3px;
+    }
+
+    .container { width: var(--content); margin-inline: auto; }
+    .section { padding: clamp(5rem, 9vw, 8rem) 0; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 1rem;
+      color: var(--forest);
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before { width: 2.25rem; height: 2px; content: ""; background: var(--green); }
+
+    .section-title {
+      max-width: 49rem;
+      margin-bottom: 1.25rem;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      letter-spacing: -0.05em;
+    }
+
+    .section-intro { max-width: 43rem; margin-bottom: 0; color: var(--grey); font-size: 1.06rem; }
+
+    .button {
+      min-height: 3.25rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.85rem 1.35rem;
+      color: var(--white);
+      background: var(--green);
+      border: 1px solid transparent;
+      border-radius: 0.2rem;
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-decoration: none;
+      transition: background 180ms ease, transform 180ms ease;
+    }
+
+    .button:hover { background: #008f45; transform: translateY(-2px); }
+    .button svg { width: 1rem; }
+
+    .component-error {
+      width: var(--content);
+      margin: 1rem auto;
+      padding: 1rem;
+      color: #7a1d1d;
+      background: #fff1f1;
+      border: 1px solid #f4b8b8;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 41rem;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      color: var(--white);
+      background:
+        linear-gradient(115deg, rgba(0, 166, 80, 0.12), transparent 42%),
+        radial-gradient(circle at 84% 18%, rgba(0, 166, 80, 0.18), transparent 22rem),
+        var(--charcoal);
+    }
+
+    .hero::before {
+      position: absolute;
+      top: 50%;
+      right: max(1rem, calc((100vw - 1180px) / 2));
+      content: "18";
+      color: transparent;
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: clamp(14rem, 28vw, 29rem);
+      font-weight: 800;
+      line-height: 0.7;
+      letter-spacing: -0.12em;
+      -webkit-text-stroke: 2px rgba(255, 255, 255, 0.065);
+      transform: translateY(-35%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 38%;
+      height: 0.32rem;
+      content: "";
+      background: var(--green);
+    }
+
+    .hero__inner { position: relative; z-index: 1; padding: clamp(5rem, 9vw, 7.5rem) 0; }
+
+    .breadcrumb {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.55rem;
+      margin-bottom: 1.4rem;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .breadcrumb a { color: rgba(255, 255, 255, 0.75); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--white); }
+
+    .hero h1 {
+      max-width: 60rem;
+      margin-bottom: 1.3rem;
+      font-size: clamp(3.5rem, 8vw, 7.4rem);
+      letter-spacing: -0.075em;
+    }
+
+    .hero h1 span { color: var(--green); }
+    .hero__text { max-width: 40rem; margin-bottom: 0; color: rgba(255, 255, 255, 0.7); font-size: 1.1rem; }
+
+    /* INTRO */
+    .intro__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+      gap: clamp(3rem, 9vw, 8rem);
+      align-items: start;
+    }
+
+    .intro__copy h2 {
+      max-width: 50rem;
+      margin-bottom: 1.5rem;
+      font-size: clamp(2.2rem, 4.8vw, 4.3rem);
+      letter-spacing: -0.055em;
+    }
+
+    .intro__copy h2 span { color: var(--green); }
+    .intro__copy p { max-width: 45rem; margin-bottom: 0; color: var(--grey); font-size: 1.06rem; }
+
+    /* GALLERY */
+    .gallery-section { padding-top: 0; }
+
+    .gallery-note {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      color: var(--grey);
+      font-size: 0.9rem;
+    }
+
+    .gallery-note svg { width: 1.1rem; color: var(--green); }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 14rem;
+      grid-auto-flow: dense;
+      gap: 1rem;
+    }
+
+    .project-card {
+      position: relative;
+      grid-column: span 4;
+      grid-row: span 2;
+      height: auto;
+      display: block;
+      overflow: hidden;
+      padding: 0;
+      color: var(--white);
+      background: #303934;
+      border: 0;
+      cursor: zoom-in;
+      text-align: left;
+    }
+
+    .project-card:nth-child(6n + 1),
+    .project-card:nth-child(6n + 5) { grid-column: span 8; }
+
+    .project-card:nth-child(5n + 2) { grid-row: span 3; }
+    .project-card:nth-child(5n + 3) { grid-row: span 1; }
+
+    .project-card img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform 650ms cubic-bezier(0.2, 0.7, 0.2, 1), filter 250ms ease;
+    }
+
+    .project-card:hover img { transform: scale(1.045); filter: saturate(1.06); }
+
+    .project-card::after {
+      position: absolute;
+      inset: 0;
+      content: "";
+      background: linear-gradient(180deg, transparent 48%, rgba(4, 12, 9, 0.82));
+      transition: background 180ms ease;
+    }
+
+    .project-card:hover::after { background: linear-gradient(180deg, transparent 38%, rgba(4, 12, 9, 0.9)); }
+
+    .project-card__content {
+      position: absolute;
+      right: 1.5rem;
+      bottom: 1.35rem;
+      left: 1.5rem;
+      z-index: 1;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .project-card__number {
+      color: rgba(255, 255, 255, 0.74);
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .project-card__view {
+      width: 2.65rem;
+      height: 2.65rem;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      color: var(--white);
+      background: var(--green);
+      border-radius: 50%;
+      transform: translateY(0.5rem);
+      opacity: 0;
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .project-card:hover .project-card__view,
+    .project-card:focus-visible .project-card__view { opacity: 1; transform: none; }
+    .project-card__view svg { width: 1rem; }
+
+    .project-card.is-missing img { display: none; }
+
+    .project-card.is-missing::before {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+      content: attr(data-placeholder);
+      color: rgba(255, 255, 255, 0.52);
+      background:
+        linear-gradient(135deg, rgba(0, 166, 80, 0.14), transparent 55%),
+        repeating-linear-gradient(-45deg, transparent 0 10px, rgba(255,255,255,0.018) 10px 20px),
+        #29312d;
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      display: grid;
+      grid-template-columns: 5rem minmax(0, 1fr) 5rem;
+      align-items: center;
+      padding: 2rem;
+      visibility: hidden;
+      opacity: 0;
+      color: var(--white);
+      background: rgba(8, 10, 9, 0.96);
+      transition: opacity 180ms ease, visibility 180ms;
+    }
+
+    .lightbox.is-open { visibility: visible; opacity: 1; }
+
+    .lightbox__figure {
+      position: relative;
+      width: min(100%, 92rem);
+      height: min(80vh, 56rem);
+      display: grid;
+      place-items: center;
+      justify-self: center;
+      margin: 0;
+    }
+
+    .lightbox__image { max-width: 100%; max-height: 100%; display: block; object-fit: contain; }
+
+    .lightbox__caption {
+      position: absolute;
+      bottom: -2.2rem;
+      left: 50%;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transform: translateX(-50%);
+      white-space: nowrap;
+    }
+
+    .lightbox__button {
+      width: 3.25rem;
+      height: 3.25rem;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 180ms ease, border-color 180ms ease;
+    }
+
+    .lightbox__button:hover { background: var(--green); border-color: var(--green); }
+    .lightbox__button svg { width: 1.25rem; }
+    .lightbox__next { justify-self: end; }
+
+    .lightbox__close {
+      position: absolute;
+      top: 1.35rem;
+      right: 1.35rem;
+      z-index: 1;
+    }
+
+    /* CTA */
+    .cta { position: relative; overflow: hidden; color: var(--white); background: var(--green); }
+
+    .cta::after {
+      position: absolute;
+      right: -8rem;
+      bottom: -12rem;
+      width: 30rem;
+      height: 30rem;
+      content: "";
+      border: 4rem solid rgba(255, 255, 255, 0.08);
+      border-radius: 50%;
+    }
+
+    .cta__inner {
+      position: relative;
+      z-index: 1;
+      min-height: 23rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+    }
+
+    .cta h2 { max-width: 48rem; margin-bottom: 0.75rem; font-size: clamp(2.4rem, 5vw, 4.7rem); letter-spacing: -0.055em; }
+    .cta p { margin: 0; color: rgba(255, 255, 255, 0.82); font-size: 1.05rem; }
+    .cta .button { flex: 0 0 auto; background: var(--charcoal); }
+    .cta .button:hover { background: var(--deep); }
+
+    .reveal { opacity: 0; transform: translateY(1.2rem); transition: opacity 600ms ease, transform 600ms ease; }
+    .reveal.is-visible { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    @media (max-width: 900px) {
+      .intro__grid { grid-template-columns: 1fr; }
+      .project-card, .project-card:nth-child(6n + 1), .project-card:nth-child(6n + 5) { grid-column: span 6; }
+
+      .cta__inner {
+        min-height: 27rem;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .hero { min-height: 38rem; }
+      .hero h1 { font-size: clamp(3.2rem, 15vw, 5.2rem); }
+      .hero::before { right: -1rem; font-size: 18rem; }
+
+      .project-card,
+      .project-card:nth-child(6n + 1),
+      .project-card:nth-child(6n + 5),
+      .project-card:nth-child(5n + 2),
+      .project-card:nth-child(5n + 3) { grid-column: 1 / -1; grid-row: auto; height: 24rem; }
+
+      .lightbox { grid-template-columns: 3.5rem minmax(0, 1fr) 3.5rem; padding: 1rem; }
+      .lightbox__button { width: 2.8rem; height: 2.8rem; }
+    }
+
+    @media (max-width: 480px) {
+      .section { padding: 4.5rem 0; }
+      .project-grid { gap: 0.7rem; }
+      .project-card,
+      .project-card:nth-child(6n + 1),
+      .project-card:nth-child(6n + 5),
+      .project-card:nth-child(5n + 2),
+      .project-card:nth-child(5n + 3) { height: 20rem; }
+      .cta .button { width: 100%; }
+
+      .lightbox {
+        grid-template-columns: 1fr 1fr;
+        align-content: center;
+        gap: 1rem;
+      }
+
+      .lightbox__figure { grid-column: 1 / -1; grid-row: 1; height: 70vh; }
+      .lightbox__previous { grid-column: 1; grid-row: 2; justify-self: start; }
+      .lightbox__next { grid-column: 2; grid-row: 2; }
+    }
+  </style>
+</head>
+
+<body class="menu-loading">
+  <div id="header-placeholder" aria-live="polite"></div>
+
+  <main id="main-content">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="container hero__inner">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a><span aria-hidden="true">/</span>
+          <span aria-current="page">Projects</span>
+        </nav>
+        <h1 id="page-title">Concrete work, <span>seen up close.</span></h1>
+        <p class="hero__text">A selection of real work from Diamond Concrete Works Ltd., showing concrete preparation, placement, finishing and completed surfaces.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="gallery-title">
+      <div class="container intro__grid">
+        <div class="reveal"><span class="eyebrow">Project gallery</span></div>
+        <div class="intro__copy reveal">
+          <h2 id="gallery-title">The standard is visible in the <span>details.</span></h2>
+          <p>Explore our project photographs across commercial, residential and exterior concrete work. Select any image to view it at a larger size.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gallery-section" aria-label="Concrete project photographs">
+      <div class="container">
+        <p class="gallery-note reveal"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M11 8v6M8 11h6"/></svg>Select an image to enlarge it.</p>
+
+        <div class="project-grid reveal" id="project-grid">
+          <button class="project-card" type="button" data-index="0" data-placeholder="Add project-01.jpeg" aria-label="Enlarge project photograph 1"><img src="assets/images/projects/project-01.jpeg" alt="Concrete project completed by Diamond Concrete Works Ltd." loading="eager"><span class="project-card__content"><span class="project-card__number">Project 01</span><span class="project-card__view"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></span></span></button>
+          <button class="project-card" type="button" data-index="1" data-placeholder="Add project-02.jpeg" aria-label="Enlarge project photograph 2"><img src="assets/images/projects/project-02.jpeg" alt="Concrete preparation and site work by Diamond Concrete Works Ltd." loading="lazy"><span class="project-card__content"><span class="project-card__number">Project 02</span><span class="project-card__view"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></span></span></button>
+          <button class="project-card" type="button" data-index="2" data-placeholder="Add project-03.jpeg" aria-label="Enlarge project photograph 3"><img src="assets/images/projects/project-03.jpeg" alt="Concrete placement project by Diamond Concrete Works Ltd." loading="lazy"><span class="project-card__content"><span class="project-card__number">Project 03</span><span class="project-card__view"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></span></span></button>
+          <button class="project-card" type="button" data-index="3" data-placeholder="Add project-04.jpeg" aria-label="Enlarge project photograph 4"><img src="assets/images/projects/project-04.jpeg" alt="Finished concrete surface by Diamond Concrete Works Ltd." loading="lazy"><span class="project-card__content"><span class="project-card__number">Project 04</span><span class="project-card__view"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></span></span></button>
+          <button class="project-card" type="button" data-index="4" data-placeholder="Add project-05.jpeg" aria-label="Enlarge project photograph 5"><img src="assets/images/projects/project-05.jpeg" alt="Concrete finishing work by Diamond Concrete Works Ltd." loading="lazy"><span class="project-card__content"><span class="project-card__number">Project 05</span><span class="project-card__view"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></span></span></button>
+          <button class="project-card" type="button" data-index="5" data-placeholder="Add project-06.jpeg" aria-label="Enlarge project photograph 6"><img src="assets/images/projects/project-06.jpeg" alt="Concrete construction project by Diamond Concrete Works Ltd." loading="lazy"><span class="project-card__content"><span class="project-card__number">Project 06</span><span class="project-card__view"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></span></span></button>
+          <button class="project-card" type="button" data-index="6" data-placeholder="Add project-07.jpeg" aria-label="Enlarge project photograph 7"><img src="assets/images/projects/project-07.jpeg" alt="Concrete site preparation by Diamond Concrete Works Ltd." loading="lazy"><span class="project-card__content"><span class="project-card__number">Project 07</span><span class="project-card__view"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></span></span></button>
+          <button class="project-card" type="button" data-index="7" data-placeholder="Add project-08.jpeg" aria-label="Enlarge project photograph 8"><img src="assets/images/projects/project-08.jpeg" alt="Concrete slab work by Diamond Concrete Works Ltd." loading="lazy"><span class="project-card__content"><span class="project-card__number">Project 08</span><span class="project-card__view"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></span></span></button>
+          <button class="project-card" type="button" data-index="8" data-placeholder="Add project-09.jpeg" aria-label="Enlarge project photograph 9"><img src="assets/images/projects/project-09.jpeg" alt="Concrete project in progress by Diamond Concrete Works Ltd." loading="lazy"><span class="project-card__content"><span class="project-card__number">Project 09</span><span class="project-card__view"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></span></span></button>
+          <button class="project-card" type="button" data-index="9" data-placeholder="Add project-10.jpeg" aria-label="Enlarge project photograph 10"><img src="assets/images/projects/project-10.jpeg" alt="Professional concrete work by Diamond Concrete Works Ltd." loading="lazy"><span class="project-card__content"><span class="project-card__number">Project 10</span><span class="project-card__view"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></span></span></button>
+          <button class="project-card" type="button" data-index="10" data-placeholder="Add project-11.jpeg" aria-label="Enlarge project photograph 11"><img src="assets/images/projects/project-11.jpeg" alt="Prepared concrete work area by Diamond Concrete Works Ltd." loading="lazy"><span class="project-card__content"><span class="project-card__number">Project 11</span><span class="project-card__view"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></span></span></button>
+          <button class="project-card" type="button" data-index="11" data-placeholder="Add project-12.jpeg" aria-label="Enlarge project photograph 12"><img src="assets/images/projects/project-12.jpeg" alt="Completed concrete work by Diamond Concrete Works Ltd." loading="lazy"><span class="project-card__content"><span class="project-card__number">Project 12</span><span class="project-card__view"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></span></span></button>
+          <button class="project-card" type="button" data-index="12" data-placeholder="Add project-13.jpeg" aria-label="Enlarge project photograph 13"><img src="assets/images/projects/project-13.jpeg" alt="Concrete forming and placement work by Diamond Concrete Works Ltd." loading="lazy"><span class="project-card__content"><span class="project-card__number">Project 13</span><span class="project-card__view"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></span></span></button>
+          <button class="project-card" type="button" data-index="13" data-placeholder="Add project-14.jpeg" aria-label="Enlarge project photograph 14"><img src="assets/images/projects/project-14.jpeg" alt="Exterior concrete work by Diamond Concrete Works Ltd." loading="lazy"><span class="project-card__content"><span class="project-card__number">Project 14</span><span class="project-card__view"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></span></span></button>
+          <button class="project-card" type="button" data-index="14" data-placeholder="Add project-15.jpeg" aria-label="Enlarge project photograph 15"><img src="assets/images/projects/project-15.jpeg" alt="Commercial concrete work by Diamond Concrete Works Ltd." loading="lazy"><span class="project-card__content"><span class="project-card__number">Project 15</span><span class="project-card__view"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></span></span></button>
+          <button class="project-card" type="button" data-index="15" data-placeholder="Add project-16.jpeg" aria-label="Enlarge project photograph 16"><img src="assets/images/projects/project-16.jpeg" alt="Residential concrete work by Diamond Concrete Works Ltd." loading="lazy"><span class="project-card__content"><span class="project-card__number">Project 16</span><span class="project-card__view"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></span></span></button>
+          <button class="project-card" type="button" data-index="16" data-placeholder="Add project-17.jpeg" aria-label="Enlarge project photograph 17"><img src="assets/images/projects/project-17.jpeg" alt="Concrete surface finishing by Diamond Concrete Works Ltd." loading="lazy"><span class="project-card__content"><span class="project-card__number">Project 17</span><span class="project-card__view"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></span></span></button>
+          <button class="project-card" type="button" data-index="17" data-placeholder="Add project-18.jpeg" aria-label="Enlarge project photograph 18"><img src="assets/images/projects/project-18.jpeg" alt="Diamond Concrete Works Ltd. project photograph" loading="lazy"><span class="project-card__content"><span class="project-card__number">Project 18</span><span class="project-card__view"><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></span></span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" aria-labelledby="cta-title">
+      <div class="container cta__inner">
+        <div class="reveal"><h2 id="cta-title">Have a concrete project in mind?</h2><p>Share the project type, location and requirements with Diamond Concrete Works Ltd.</p></div>
+        <a class="button reveal" href="contact.html">Request a Quote <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder" aria-live="polite"></div>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Project image viewer" aria-hidden="true">
+    <button class="lightbox__button lightbox__close" id="lightbox-close" type="button" aria-label="Close image viewer"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+    <button class="lightbox__button lightbox__previous" id="lightbox-previous" type="button" aria-label="View previous image"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 5-7 7 7 7"/></svg></button>
+    <figure class="lightbox__figure">
+      <img class="lightbox__image" id="lightbox-image" src="" alt="">
+      <figcaption class="lightbox__caption" id="lightbox-caption"></figcaption>
+    </figure>
+    <button class="lightbox__button lightbox__next" id="lightbox-next" type="button" aria-label="View next image"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 5 7 7-7 7"/></svg></button>
+  </div>
+
+  <script>
+    async function loadComponent(targetId, fileName) {
+      const target = document.getElementById(targetId);
+      if (!target) return;
+
+      try {
+        const response = await fetch(fileName);
+        if (!response.ok) throw new Error(`Unable to load ${fileName}`);
+        target.innerHTML = await response.text();
+
+        target.querySelectorAll('script').forEach((oldScript) => {
+          const newScript = document.createElement('script');
+          Array.from(oldScript.attributes).forEach((attribute) => newScript.setAttribute(attribute.name, attribute.value));
+          newScript.textContent = oldScript.textContent;
+          oldScript.replaceWith(newScript);
+        });
+      } catch (error) {
+        console.error(error);
+        target.innerHTML = `<div class="component-error">${fileName} could not be loaded. Preview the website through a local server or GitHub Pages.</div>`;
+      }
+    }
+
+    function initializeGallery() {
+      const cards = Array.from(document.querySelectorAll('.project-card'));
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImage = document.getElementById('lightbox-image');
+      const lightboxCaption = document.getElementById('lightbox-caption');
+      const closeButton = document.getElementById('lightbox-close');
+      const previousButton = document.getElementById('lightbox-previous');
+      const nextButton = document.getElementById('lightbox-next');
+      let currentIndex = 0;
+      let lastFocusedCard = null;
+
+      cards.forEach((card) => {
+        const image = card.querySelector('img');
+        const markMissing = () => card.classList.add('is-missing');
+        image.addEventListener('error', markMissing);
+        if (image.complete && image.naturalWidth === 0) markMissing();
+      });
+
+      function showImage(index) {
+        currentIndex = (index + cards.length) % cards.length;
+        const card = cards[currentIndex];
+        const sourceImage = card.querySelector('img');
+        lightboxImage.src = sourceImage.src;
+        lightboxImage.alt = sourceImage.alt;
+        lightboxCaption.textContent = `Project ${String(currentIndex + 1).padStart(2, '0')} of ${cards.length}`;
+      }
+
+      function openLightbox(index) {
+        const card = cards[index];
+        if (card.classList.contains('is-missing')) return;
+        currentIndex = index;
+        lastFocusedCard = card;
+        showImage(currentIndex);
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('lightbox-open');
+        closeButton.focus();
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('lightbox-open');
+        lightboxImage.src = '';
+        if (lastFocusedCard) lastFocusedCard.focus();
+      }
+
+      cards.forEach((card, index) => card.addEventListener('click', () => openLightbox(index)));
+      closeButton.addEventListener('click', closeLightbox);
+      previousButton.addEventListener('click', () => showImage(currentIndex - 1));
+      nextButton.addEventListener('click', () => showImage(currentIndex + 1));
+
+      lightbox.addEventListener('click', (event) => {
+        if (event.target === lightbox) closeLightbox();
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (!lightbox.classList.contains('is-open')) return;
+        if (event.key === 'Escape') closeLightbox();
+        if (event.key === 'ArrowLeft') showImage(currentIndex - 1);
+        if (event.key === 'ArrowRight') showImage(currentIndex + 1);
+      });
+    }
+
+    async function initializePage() {
+      await Promise.all([
+        loadComponent('header-placeholder', 'header.html'),
+        loadComponent('footer-placeholder', 'footer.html')
+      ]);
+
+      document.body.classList.remove('menu-loading');
+      initializeGallery();
+
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const revealElements = document.querySelectorAll('.reveal');
+      if (reducedMotion || !('IntersectionObserver' in window)) {
+        revealElements.forEach((element) => element.classList.add('is-visible'));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+
+      revealElements.forEach((element) => observer.observe(element));
+    }
+
+    document.addEventListener('DOMContentLoaded', initializePage);
+  </script>
+</body>
+</html>
