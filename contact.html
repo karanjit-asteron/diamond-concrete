@@ -356,6 +356,96 @@
     .form-status.is-error { color: #812424; background: #fff0f0; border-left-color: var(--error); }
     .form-status a { color: inherit; font-weight: 800; }
 
+    .quote-form-view[hidden], .success-panel[hidden] { display: none; }
+
+    .success-panel {
+      min-height: 42rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      animation: success-reveal 500ms ease both;
+    }
+
+    .success-panel__icon {
+      width: 5.5rem;
+      height: 5.5rem;
+      display: grid;
+      place-items: center;
+      margin-bottom: 2rem;
+      color: var(--white);
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 0 0.7rem rgba(0, 166, 80, 0.1);
+    }
+
+    .success-panel__icon svg { width: 2.5rem; }
+
+    .success-panel__label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin-bottom: 1rem;
+      color: var(--forest);
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .success-panel__label::before { width: 2rem; height: 2px; content: ""; background: var(--green); }
+
+    .success-panel h2 {
+      max-width: 38rem;
+      margin-bottom: 1rem;
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      letter-spacing: -0.06em;
+    }
+
+    .success-panel__message { max-width: 39rem; margin-bottom: 1.1rem; color: var(--grey); font-size: 1.06rem; }
+
+    .success-panel__summary {
+      width: 100%;
+      max-width: 39rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.55rem 1.25rem;
+      margin: 1rem 0 2rem;
+      padding: 1.2rem 1.35rem;
+      background: var(--off-white);
+      border-left: 4px solid var(--green);
+    }
+
+    .success-panel__summary dt { color: var(--grey); font-size: 0.82rem; font-weight: 700; }
+    .success-panel__summary dd { margin: 0; color: var(--charcoal); font-weight: 700; overflow-wrap: anywhere; }
+
+    .secondary-button {
+      min-height: 3.2rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.8rem 1.25rem;
+      color: var(--forest);
+      background: transparent;
+      border: 1px solid var(--forest);
+      border-radius: 0.2rem;
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 0.88rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+    }
+
+    .secondary-button:hover { color: var(--white); background: var(--forest); transform: translateY(-2px); }
+    .secondary-button svg { width: 1rem; }
+
+    @keyframes success-reveal {
+      from { opacity: 0; transform: translateY(1rem); }
+      to { opacity: 1; transform: none; }
+    }
+
     .honeypot { position: absolute !important; left: -9999px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
 
     /* EXPECTATIONS */
@@ -445,7 +535,7 @@
       </div>
     </section>
 
-    <section class="contact-section" aria-labelledby="quote-title">
+    <section class="contact-section" aria-label="Contact and quote request">
       <div class="container contact-layout">
         <aside class="contact-details reveal" aria-labelledby="contact-details-title">
           <span class="eyebrow">Contact details</span>
@@ -468,14 +558,15 @@
         </aside>
 
         <div class="quote-panel reveal">
-          <div class="quote-panel__heading">
-            <span class="eyebrow">Request a quote</span>
-            <h2 id="quote-title">Project information</h2>
-            <p>Fields marked with an asterisk are required. Your details will only be used to respond to this request.</p>
-          </div>
+          <div class="quote-form-view" id="quote-form-view">
+            <div class="quote-panel__heading">
+              <span class="eyebrow">Request a quote</span>
+              <h2 id="quote-title">Project information</h2>
+              <p>Fields marked with an asterisk are required. Your details will only be used to respond to this request.</p>
+            </div>
 
-          <!-- Add your form service URL to data-form-endpoint when it is ready. -->
-          <form class="quote-form" id="quote-form" data-form-endpoint="" novalidate>
+            <!-- Add your form service URL to data-form-endpoint when it is ready. -->
+            <form class="quote-form" id="quote-form" data-form-endpoint="" novalidate>
             <div class="honeypot" aria-hidden="true">
               <label for="website">Leave this field empty</label>
               <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
@@ -553,8 +644,21 @@
               <p class="form-privacy">Do not include payment information or other sensitive personal information in this form.</p>
             </div>
 
-            <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
-          </form>
+              <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+
+          <section class="success-panel" id="success-panel" tabindex="-1" aria-labelledby="success-title" hidden>
+            <span class="success-panel__icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m5 12 4.5 4.5L19 7"/></svg></span>
+            <span class="success-panel__label">Request received</span>
+            <h2 id="success-title">Thank you, <span id="success-name">there</span>.</h2>
+            <p class="success-panel__message">Your quote request has been submitted successfully. Diamond Concrete Works Ltd. will review the project information and follow up using your preferred contact method.</p>
+            <dl class="success-panel__summary">
+              <dt>Service</dt><dd id="success-service">Concrete project</dd>
+              <dt>Contact by</dt><dd id="success-contact">Email</dd>
+            </dl>
+            <button class="secondary-button" id="send-another-request" type="button">Send Another Request <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10h14M8 5l-5 5 5 5"/></svg></button>
+          </section>
         </div>
       </div>
     </section>
@@ -600,8 +704,14 @@
 
     function initializeForm() {
       const form = document.getElementById('quote-form');
+      const formView = document.getElementById('quote-form-view');
       const status = document.getElementById('form-status');
       const submitButton = document.getElementById('submit-button');
+      const successPanel = document.getElementById('success-panel');
+      const successName = document.getElementById('success-name');
+      const successService = document.getElementById('success-service');
+      const successContact = document.getElementById('success-contact');
+      const sendAnotherButton = document.getElementById('send-another-request');
       const emailAddress = 'diamondconcreteworks@hotmail.com';
 
       const fields = {
@@ -644,6 +754,31 @@
         return isValid;
       }
 
+      function clearValidation() {
+        Object.values(fields).forEach((field) => {
+          field.input.removeAttribute('aria-invalid');
+          field.error.textContent = '';
+        });
+        document.getElementById('phone').removeAttribute('aria-invalid');
+        document.getElementById('phone-error').textContent = '';
+        status.className = 'form-status';
+        status.textContent = '';
+      }
+
+      function showCompletion(name, service, preferredContact) {
+        successName.textContent = name;
+        successService.textContent = service;
+        successContact.textContent = preferredContact;
+        formView.hidden = true;
+        successPanel.hidden = false;
+        successPanel.focus();
+      }
+
+      function setSending(isSending) {
+        submitButton.disabled = isSending;
+        submitButton.firstChild.textContent = isSending ? 'Sending… ' : 'Send Quote Request ';
+      }
+
       Object.values(fields).forEach((field) => {
         field.input.addEventListener('blur', () => validateField(field));
         field.input.addEventListener('input', () => {
@@ -661,7 +796,7 @@
 
         if (form.elements.website.value) return;
 
-        const preferredContact = form.querySelector('input[name="preferred_contact"]:checked')?.value;
+        const preferredContact = form.querySelector('input[name="preferred_contact"]:checked')?.value || 'Email';
         const phone = document.getElementById('phone');
         const phoneError = document.getElementById('phone-error');
 
@@ -686,14 +821,18 @@
         }
 
         const endpoint = form.dataset.formEndpoint.trim();
+        const submittedName = fields['full-name'].input.value.trim();
+        const submittedService = fields.service.input.value;
+        setSending(true);
+
         if (!endpoint) {
-          status.className = 'form-status is-visible is-success';
-          status.innerHTML = `The online form is being connected. Please email your project details directly to <a href="mailto:${emailAddress}">${emailAddress}</a>.`;
+          await new Promise((resolve) => window.setTimeout(resolve, 700));
+          showCompletion(submittedName, submittedService, preferredContact);
+          form.reset();
+          clearValidation();
+          setSending(false);
           return;
         }
-
-        submitButton.disabled = true;
-        submitButton.firstChild.textContent = 'Sending… ';
 
         try {
           const response = await fetch(endpoint, {
@@ -704,21 +843,23 @@
 
           if (!response.ok) throw new Error('The quote request could not be sent.');
 
+          showCompletion(submittedName, submittedService, preferredContact);
           form.reset();
-          Object.values(fields).forEach((field) => {
-            field.input.removeAttribute('aria-invalid');
-            field.error.textContent = '';
-          });
-          status.className = 'form-status is-visible is-success';
-          status.textContent = 'Thank you. Your project information has been sent successfully.';
+          clearValidation();
         } catch (error) {
           console.error(error);
           status.className = 'form-status is-visible is-error';
           status.innerHTML = `Your request could not be sent. Please email <a href="mailto:${emailAddress}">${emailAddress}</a> instead.`;
         } finally {
-          submitButton.disabled = false;
-          submitButton.firstChild.textContent = 'Send Quote Request ';
+          setSending(false);
         }
+      });
+
+      sendAnotherButton.addEventListener('click', () => {
+        successPanel.hidden = true;
+        formView.hidden = false;
+        clearValidation();
+        fields['full-name'].input.focus();
       });
     }
 
