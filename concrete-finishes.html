@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore broom finish, exposed aggregate and stamped concrete options from Diamond Concrete Works Ltd. in Edmonton, Alberta.">
+  <meta name="theme-color" content="#064e3b">
+  <title>Concrete Finishes | Diamond Concrete Works Ltd.</title>
+
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green: #00a650;
+      --forest: #064e3b;
+      --deep: #03392c;
+      --charcoal: #171918;
+      --grey: #727875;
+      --concrete: #e8ebe9;
+      --off-white: #f7f7f3;
+      --white: #ffffff;
+      --line: rgba(23, 25, 24, 0.12);
+      --shadow: 0 1.5rem 4rem rgba(6, 78, 59, 0.14);
+      --content: min(1180px, calc(100% - 2rem));
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--charcoal);
+      background: var(--white);
+      font-family: "DM Sans", system-ui, sans-serif;
+      font-size: 1rem;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.menu-loading { padding-top: 7.65rem; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: "Manrope", system-ui, sans-serif; line-height: 1.08; }
+    a, button { -webkit-tap-highlight-color: transparent; }
+
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid rgba(0, 166, 80, 0.45);
+      outline-offset: 3px;
+    }
+
+    .container { width: var(--content); margin-inline: auto; }
+    .section { padding: clamp(5rem, 9vw, 8rem) 0; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 1rem;
+      color: var(--forest);
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before { width: 2.25rem; height: 2px; content: ""; background: var(--green); }
+
+    .section-title {
+      max-width: 50rem;
+      margin-bottom: 1.25rem;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      letter-spacing: -0.05em;
+    }
+
+    .section-intro { max-width: 44rem; margin-bottom: 0; color: var(--grey); font-size: 1.06rem; }
+
+    .button {
+      min-height: 3.25rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 0.85rem 1.35rem;
+      color: var(--white);
+      background: var(--green);
+      border: 1px solid transparent;
+      border-radius: 0.2rem;
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-decoration: none;
+      transition: background 180ms ease, transform 180ms ease;
+    }
+
+    .button:hover { background: #008f45; transform: translateY(-2px); }
+    .button svg { width: 1rem; }
+
+    .component-error {
+      width: var(--content);
+      margin: 1rem auto;
+      padding: 1rem;
+      color: #7a1d1d;
+      background: #fff1f1;
+      border: 1px solid #f4b8b8;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 44rem;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      color: var(--white);
+      background-color: var(--charcoal);
+      background-image:
+        linear-gradient(90deg, rgba(7, 14, 11, 0.96), rgba(7, 14, 11, 0.76) 48%, rgba(7, 14, 11, 0.2)),
+        url("assets/images/finishes/finishes-hero.webp");
+      background-position: center;
+      background-size: cover;
+    }
+
+    .hero::before {
+      position: absolute;
+      inset: 0;
+      content: "";
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.36), transparent 50%);
+    }
+
+    .hero__inner { position: relative; z-index: 1; padding: clamp(5.5rem, 10vw, 8rem) 0; }
+
+    .breadcrumb {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.55rem;
+      margin-bottom: 1.4rem;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .breadcrumb a { color: rgba(255, 255, 255, 0.75); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--white); }
+
+    .hero h1 {
+      max-width: 59rem;
+      margin-bottom: 1.3rem;
+      font-size: clamp(3.3rem, 7.5vw, 7rem);
+      letter-spacing: -0.07em;
+    }
+
+    .hero h1 span { color: var(--green); }
+    .hero__text { max-width: 43rem; margin-bottom: 2rem; color: rgba(255, 255, 255, 0.74); font-size: 1.1rem; }
+
+    /* INTRODUCTION */
+    .intro__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+      gap: clamp(3rem, 9vw, 8rem);
+      align-items: start;
+    }
+
+    .intro__copy h2 {
+      max-width: 51rem;
+      margin-bottom: 1.6rem;
+      font-size: clamp(2.2rem, 4.8vw, 4.3rem);
+      letter-spacing: -0.055em;
+    }
+
+    .intro__copy h2 span { color: var(--green); }
+    .intro__columns { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; color: var(--grey); }
+    .intro__columns p { margin-bottom: 0; }
+
+    /* FINISH DETAILS */
+    .finish-section { overflow: hidden; background: var(--off-white); }
+    .finish-list { display: grid; gap: clamp(5rem, 10vw, 9rem); }
+
+    .finish-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: clamp(3rem, 8vw, 7rem);
+      align-items: center;
+    }
+
+    .finish-row:nth-child(even) .finish-row__image { order: 2; }
+    .finish-row:nth-child(even) .finish-row__copy { order: 1; }
+
+    .finish-row__image {
+      position: relative;
+      min-height: 37rem;
+      overflow: hidden;
+      background-color: #303934;
+      background-position: center;
+      background-size: cover;
+      box-shadow: 1.2rem 1.2rem 0 rgba(0, 166, 80, 0.12);
+    }
+
+    .finish-row:first-child .finish-row__image { background-image: url("assets/images/finishes/broom-finish.webp"); }
+    .finish-row:nth-child(2) .finish-row__image { background-image: url("assets/images/finishes/exposed-aggregate.webp"); }
+    .finish-row:nth-child(3) .finish-row__image { background-image: url("assets/images/finishes/stamped-concrete.webp"); }
+
+    .finish-row__image::after {
+      position: absolute;
+      inset: 0;
+      content: "";
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: inset 0 -8rem 9rem rgba(3, 20, 14, 0.24);
+    }
+
+    .finish-row__number {
+      display: inline-block;
+      margin-bottom: 1.15rem;
+      color: var(--green);
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+    }
+
+    .finish-row h2 {
+      margin-bottom: 1.15rem;
+      font-size: clamp(2.35rem, 5vw, 4.35rem);
+      letter-spacing: -0.06em;
+    }
+
+    .finish-row__copy > p { margin-bottom: 1.8rem; color: var(--grey); font-size: 1.04rem; }
+
+    .finish-features { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+
+    .finish-features li {
+      display: grid;
+      grid-template-columns: 1.5rem 1fr;
+      gap: 0.8rem;
+      align-items: start;
+      padding: 0.85rem 0;
+      color: var(--charcoal);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .finish-features svg { width: 1rem; margin-top: 0.3rem; color: var(--green); }
+
+    /* COMPARISON */
+    .comparison { color: var(--white); background: var(--charcoal); }
+    .comparison .eyebrow { color: rgba(255, 255, 255, 0.72); }
+    .comparison__heading { margin-bottom: 3rem; }
+    .comparison__heading .section-intro { color: rgba(255, 255, 255, 0.64); }
+
+    .table-wrap { overflow-x: auto; border: 1px solid rgba(255, 255, 255, 0.14); }
+
+    .comparison-table {
+      width: 100%;
+      min-width: 47rem;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .comparison-table th,
+    .comparison-table td { padding: 1.4rem 1.5rem; border-right: 1px solid rgba(255, 255, 255, 0.12); border-bottom: 1px solid rgba(255, 255, 255, 0.12); vertical-align: top; }
+    .comparison-table th:last-child,
+    .comparison-table td:last-child { border-right: 0; }
+    .comparison-table tbody tr:last-child td { border-bottom: 0; }
+
+    .comparison-table thead th {
+      color: rgba(255, 255, 255, 0.54);
+      background: rgba(255, 255, 255, 0.045);
+      font-family: "Manrope", system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .comparison-table tbody th { color: var(--green); font-family: "Manrope", system-ui, sans-serif; font-size: 1rem; }
+    .comparison-table td { color: rgba(255, 255, 255, 0.68); }
+
+    /* CHOOSING A FINISH */
+    .selection__heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .selection__heading .section-title { margin-bottom: 0; }
+
+    .selection-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+
+    .selection-card {
+      min-height: 19rem;
+      padding: 2.3rem;
+      background: var(--white);
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      transition: color 200ms ease, background 200ms ease, transform 200ms ease;
+    }
+
+    .selection-card:hover { z-index: 1; color: var(--white); background: var(--forest); box-shadow: var(--shadow); transform: translateY(-0.3rem); }
+
+    .selection-card__icon {
+      width: 3.25rem;
+      height: 3.25rem;
+      display: grid;
+      place-items: center;
+      margin-bottom: 3rem;
+      color: var(--forest);
+      background: rgba(0, 166, 80, 0.1);
+      border-radius: 50%;
+    }
+
+    .selection-card:hover .selection-card__icon { color: var(--white); background: var(--green); }
+    .selection-card__icon svg { width: 1.4rem; }
+    .selection-card h3 { margin-bottom: 0.7rem; font-size: 1.45rem; }
+    .selection-card p { margin: 0; color: var(--grey); }
+    .selection-card:hover p { color: rgba(255, 255, 255, 0.68); }
+
+    /* CTA */
+    .cta { position: relative; overflow: hidden; color: var(--white); background: var(--green); }
+
+    .cta::after {
+      position: absolute;
+      right: -8rem;
+      bottom: -12rem;
+      width: 30rem;
+      height: 30rem;
+      content: "";
+      border: 4rem solid rgba(255, 255, 255, 0.08);
+      border-radius: 50%;
+    }
+
+    .cta__inner {
+      position: relative;
+      z-index: 1;
+      min-height: 23rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+    }
+
+    .cta h2 { max-width: 48rem; margin-bottom: 0.75rem; font-size: clamp(2.4rem, 5vw, 4.7rem); letter-spacing: -0.055em; }
+    .cta p { margin: 0; color: rgba(255, 255, 255, 0.82); font-size: 1.05rem; }
+    .cta .button { flex: 0 0 auto; background: var(--charcoal); }
+    .cta .button:hover { background: var(--deep); }
+
+    .reveal { opacity: 0; transform: translateY(1.2rem); transition: opacity 600ms ease, transform 600ms ease; }
+    .reveal.is-visible { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    @media (max-width: 900px) {
+      .intro__grid, .finish-row { grid-template-columns: 1fr; }
+      .intro__columns { grid-template-columns: 1fr; }
+      .finish-row:nth-child(even) .finish-row__image,
+      .finish-row:nth-child(even) .finish-row__copy { order: initial; }
+      .finish-row__image { min-height: 31rem; }
+      .selection-grid { grid-template-columns: 1fr; }
+
+      .cta__inner {
+        min-height: 27rem;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .hero { min-height: 39rem; }
+      .hero h1 { font-size: clamp(3.15rem, 15vw, 5.2rem); }
+      .selection__heading { align-items: flex-start; flex-direction: column; }
+      .finish-row__image { min-height: 25rem; box-shadow: 0.75rem 0.75rem 0 rgba(0, 166, 80, 0.12); }
+    }
+
+    @media (max-width: 480px) {
+      .section { padding: 4.5rem 0; }
+      .finish-row__image { min-height: 21rem; }
+      .selection-card { min-height: 0; }
+      .cta .button { width: 100%; }
+    }
+  </style>
+</head>
+
+<body class="menu-loading">
+  <div id="header-placeholder" aria-live="polite"></div>
+
+  <main id="main-content">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="container hero__inner">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a><span aria-hidden="true">/</span>
+          <a href="services.html">Services</a><span aria-hidden="true">/</span>
+          <span aria-current="page">Concrete Finishes</span>
+        </nav>
+        <h1 id="page-title">Concrete finished with <span>character.</span></h1>
+        <p class="hero__text">Compare broom finish, exposed aggregate and stamped concrete to find the surface texture and appearance that suit your project.</p>
+        <a class="button" href="contact.html">Discuss Your Finish <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></a>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="intro-title">
+      <div class="container intro__grid">
+        <div class="reveal"><span class="eyebrow">Concrete finishes</span></div>
+        <div class="intro__copy reveal">
+          <h2 id="intro-title">The finish shapes how concrete <span>looks and feels.</span></h2>
+          <div class="intro__columns">
+            <p>A concrete finish is more than the final visual layer. It defines the surface texture and helps the concrete relate to its location, intended use and surrounding design.</p>
+            <p>Diamond Concrete Works Ltd. offers three distinct finish options. The right selection depends on the project area, functional requirements and the appearance you want.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section finish-section" aria-label="Concrete finish options">
+      <div class="container finish-list">
+        <article class="finish-row">
+          <div class="finish-row__image reveal" role="img" aria-label="Close-up example of broom finish concrete"></div>
+          <div class="finish-row__copy reveal">
+            <span class="finish-row__number">01 / TEXTURED</span>
+            <h2>Broom Finish</h2>
+            <p>A broom finish creates fine, visible lines across the concrete surface. Its straightforward texture gives exterior concrete a clean, practical appearance.</p>
+            <ul class="finish-features">
+              <li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-8"/></svg><span>Linear surface texture</span></li>
+              <li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-8"/></svg><span>Commonly considered for sidewalks, driveways and ramps</span></li>
+              <li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-8"/></svg><span>Simple, functional visual character</span></li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="finish-row">
+          <div class="finish-row__image reveal" role="img" aria-label="Close-up example of exposed aggregate concrete"></div>
+          <div class="finish-row__copy reveal">
+            <span class="finish-row__number">02 / DECORATIVE</span>
+            <h2>Exposed Aggregate</h2>
+            <p>Exposed aggregate reveals the stone within the concrete, producing a naturally varied surface with visible texture, colour and detail.</p>
+            <ul class="finish-features">
+              <li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-8"/></svg><span>Visible stone and aggregate texture</span></li>
+              <li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-8"/></svg><span>Suitable when the project calls for a more decorative surface</span></li>
+              <li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-8"/></svg><span>Natural variation across the completed concrete</span></li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="finish-row">
+          <div class="finish-row__image reveal" role="img" aria-label="Close-up example of stamped concrete"></div>
+          <div class="finish-row__copy reveal">
+            <span class="finish-row__number">03 / PATTERNED</span>
+            <h2>Stamped Concrete</h2>
+            <p>Stamped concrete uses an applied pattern to give the surface a more customized decorative appearance while retaining concrete as the base material.</p>
+            <ul class="finish-features">
+              <li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-8"/></svg><span>Patterned surface appearance</span></li>
+              <li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-8"/></svg><span>Considered for decorative walkways and exterior areas</span></li>
+              <li><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-8"/></svg><span>Strong visual definition within the project design</span></li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section comparison" aria-labelledby="comparison-title">
+      <div class="container">
+        <div class="comparison__heading reveal">
+          <span class="eyebrow">At a glance</span>
+          <h2 class="section-title" id="comparison-title">Compare the finish options.</h2>
+          <p class="section-intro">This comparison provides a simple starting point. The final choice should respond to the specific project and placement area.</p>
+        </div>
+
+        <div class="table-wrap reveal" tabindex="0" aria-label="Scrollable concrete finish comparison">
+          <table class="comparison-table">
+            <thead><tr><th scope="col">Finish</th><th scope="col">Surface appearance</th><th scope="col">Common consideration</th><th scope="col">Visual direction</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Broom</th><td>Fine, straight surface lines</td><td>Practical exterior concrete areas</td><td>Clean and functional</td></tr>
+              <tr><th scope="row">Exposed Aggregate</th><td>Visible stone and natural variation</td><td>Decorative exterior surfaces</td><td>Textured and distinctive</td></tr>
+              <tr><th scope="row">Stamped</th><td>Applied surface pattern</td><td>Projects seeking a customized appearance</td><td>Decorative and defined</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section selection" aria-labelledby="selection-title">
+      <div class="container">
+        <div class="selection__heading reveal">
+          <div><span class="eyebrow">Choosing a finish</span><h2 class="section-title" id="selection-title">Start with the surface and its purpose.</h2></div>
+        </div>
+
+        <div class="selection-grid reveal">
+          <article class="selection-card">
+            <span class="selection-card__icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20 9 4h6l5 16M7 14h10M8 10h8"/></svg></span>
+            <h3>Placement Area</h3>
+            <p>Consider whether the concrete is a walkway, driveway, ramp or another exterior surface.</p>
+          </article>
+
+          <article class="selection-card">
+            <span class="selection-card__icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span>
+            <h3>Texture Preference</h3>
+            <p>Compare the understated lines of broom finish with the stronger texture of aggregate or a stamped pattern.</p>
+          </article>
+
+          <article class="selection-card">
+            <span class="selection-card__icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 4 8v8l8 5 8-5V8l-8-5ZM4 8l8 5 8-5M12 13v8"/></svg></span>
+            <h3>Surrounding Design</h3>
+            <p>Select a surface character that works with nearby buildings, landscaping and other site materials.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" aria-labelledby="cta-title">
+      <div class="container cta__inner">
+        <div class="reveal"><h2 id="cta-title">Which finish fits your project?</h2><p>Tell Diamond Concrete Works Ltd. about the surface, location and appearance you have in mind.</p></div>
+        <a class="button reveal" href="contact.html">Request a Quote <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder" aria-live="polite"></div>
+
+  <script>
+    async function loadComponent(targetId, fileName) {
+      const target = document.getElementById(targetId);
+      if (!target) return;
+
+      try {
+        const response = await fetch(fileName);
+        if (!response.ok) throw new Error(`Unable to load ${fileName}`);
+        target.innerHTML = await response.text();
+
+        target.querySelectorAll('script').forEach((oldScript) => {
+          const newScript = document.createElement('script');
+          Array.from(oldScript.attributes).forEach((attribute) => newScript.setAttribute(attribute.name, attribute.value));
+          newScript.textContent = oldScript.textContent;
+          oldScript.replaceWith(newScript);
+        });
+      } catch (error) {
+        console.error(error);
+        target.innerHTML = `<div class="component-error">${fileName} could not be loaded. Preview the website through a local server or GitHub Pages.</div>`;
+      }
+    }
+
+    async function initializePage() {
+      await Promise.all([
+        loadComponent('header-placeholder', 'header.html'),
+        loadComponent('footer-placeholder', 'footer.html')
+      ]);
+
+      document.body.classList.remove('menu-loading');
+
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const revealElements = document.querySelectorAll('.reveal');
+      if (reducedMotion || !('IntersectionObserver' in window)) {
+        revealElements.forEach((element) => element.classList.add('is-visible'));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      revealElements.forEach((element) => observer.observe(element));
+    }
+
+    document.addEventListener('DOMContentLoaded', initializePage);
+  </script>
+</body>
+</html>
