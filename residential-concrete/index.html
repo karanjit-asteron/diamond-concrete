@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <base href="/diamond-concrete/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Commercial slabs, suspended slabs, slab on grade and structural slabs from Diamond Concrete Works Ltd. in Edmonton, Alberta.">
+  <meta name="description" content="Residential concrete services for basement floors, garage floors, sidewalks and driveways from Diamond Concrete Works Ltd. in Edmonton, Alberta.">
   <meta name="theme-color" content="#064e3b">
-  <title>Commercial Concrete | Diamond Concrete Works Ltd.</title>
+  <title>Residential Concrete | Diamond Concrete Works Ltd.</title>
 
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,10 +28,7 @@
       --content: min(1180px, calc(100% - 2rem));
     }
 
-    *,
-    *::before,
-    *::after { box-sizing: border-box; }
-
+    *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
     body {
@@ -44,14 +42,10 @@
     }
 
     body.menu-loading { padding-top: 7.65rem; }
-
     h1, h2, h3, p { margin-top: 0; }
-    h1, h2, h3 {
-      font-family: "Manrope", system-ui, sans-serif;
-      line-height: 1.08;
-    }
-
+    h1, h2, h3 { font-family: "Manrope", system-ui, sans-serif; line-height: 1.08; }
     a, button { -webkit-tap-highlight-color: transparent; }
+
     a:focus-visible, button:focus-visible {
       outline: 3px solid rgba(0, 166, 80, 0.45);
       outline-offset: 3px;
@@ -73,12 +67,7 @@
       text-transform: uppercase;
     }
 
-    .eyebrow::before {
-      width: 2.25rem;
-      height: 2px;
-      content: "";
-      background: var(--green);
-    }
+    .eyebrow::before { width: 2.25rem; height: 2px; content: ""; background: var(--green); }
 
     .section-title {
       max-width: 48rem;
@@ -87,12 +76,7 @@
       letter-spacing: -0.05em;
     }
 
-    .section-intro {
-      max-width: 43rem;
-      margin-bottom: 0;
-      color: var(--grey);
-      font-size: 1.06rem;
-    }
+    .section-intro { max-width: 43rem; margin-bottom: 0; color: var(--grey); font-size: 1.06rem; }
 
     .button {
       min-height: 3.25rem;
@@ -113,7 +97,7 @@
     }
 
     .button:hover { background: #008f45; transform: translateY(-2px); }
-    .button svg { width: 1rem; }
+    .button svg, .text-link svg { width: 1rem; }
 
     .component-error {
       width: var(--content);
@@ -135,7 +119,7 @@
       background-color: var(--charcoal);
       background-image:
         linear-gradient(90deg, rgba(7, 14, 11, 0.96), rgba(7, 14, 11, 0.78) 48%, rgba(7, 14, 11, 0.22)),
-        url("assets/images/commercial/commercial-hero.webp");
+        url("assets/images/residential/residential-hero.webp");
       background-position: center;
       background-size: cover;
     }
@@ -147,11 +131,7 @@
       background: linear-gradient(0deg, rgba(0, 0, 0, 0.35), transparent 50%);
     }
 
-    .hero__inner {
-      position: relative;
-      z-index: 1;
-      padding: clamp(5.5rem, 10vw, 8rem) 0;
-    }
+    .hero__inner { position: relative; z-index: 1; padding: clamp(5.5rem, 10vw, 8rem) 0; }
 
     .breadcrumb {
       display: flex;
@@ -170,26 +150,16 @@
     .breadcrumb a:hover { color: var(--white); }
 
     .hero h1 {
-      max-width: 57rem;
+      max-width: 58rem;
       margin-bottom: 1.3rem;
       font-size: clamp(3.3rem, 7.5vw, 7rem);
       letter-spacing: -0.07em;
     }
 
     .hero h1 span { color: var(--green); }
+    .hero__text { max-width: 43rem; margin-bottom: 2rem; color: rgba(255, 255, 255, 0.74); font-size: 1.1rem; }
 
-    .hero__text {
-      max-width: 43rem;
-      margin-bottom: 2rem;
-      color: rgba(255, 255, 255, 0.74);
-      font-size: 1.1rem;
-    }
-
-    /* INTRODUCTION */
-    .intro {
-      position: relative;
-    }
-
+    /* INTRO */
     .intro__grid {
       display: grid;
       grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
@@ -205,20 +175,13 @@
     }
 
     .intro__copy h2 span { color: var(--green); }
-
-    .intro__columns {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-      color: var(--grey);
-    }
-
+    .intro__columns { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; color: var(--grey); }
     .intro__columns p { margin-bottom: 0; }
 
-    /* SLAB TYPES */
-    .slab-types { background: var(--off-white); }
+    /* RESIDENTIAL SERVICES */
+    .residential-services { background: var(--off-white); }
 
-    .slab-types__heading {
+    .service-heading {
       display: flex;
       align-items: end;
       justify-content: space-between;
@@ -226,16 +189,16 @@
       margin-bottom: 3rem;
     }
 
-    .slab-types__heading .section-title { margin-bottom: 0; }
+    .service-heading .section-title { margin-bottom: 0; }
 
-    .slab-grid {
+    .service-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       border-top: 1px solid var(--line);
       border-left: 1px solid var(--line);
     }
 
-    .slab-card {
+    .service-card {
       min-height: 19rem;
       display: flex;
       flex-direction: column;
@@ -247,7 +210,7 @@
       transition: color 200ms ease, background 200ms ease, transform 200ms ease;
     }
 
-    .slab-card:hover {
+    .service-card:hover {
       z-index: 1;
       color: var(--white);
       background: var(--forest);
@@ -255,14 +218,9 @@
       transform: translateY(-0.3rem);
     }
 
-    .slab-card__top {
-      display: flex;
-      align-items: start;
-      justify-content: space-between;
-      gap: 1rem;
-    }
+    .service-card__top { display: flex; align-items: start; justify-content: space-between; gap: 1rem; }
 
-    .slab-card__number {
+    .service-card__number {
       color: var(--green);
       font-family: "Manrope", system-ui, sans-serif;
       font-size: 0.82rem;
@@ -270,7 +228,7 @@
       letter-spacing: 0.12em;
     }
 
-    .slab-card__icon {
+    .service-card__icon {
       width: 3.2rem;
       height: 3.2rem;
       display: grid;
@@ -280,73 +238,35 @@
       border-radius: 50%;
     }
 
-    .slab-card:hover .slab-card__icon { color: var(--white); background: var(--green); }
-    .slab-card__icon svg { width: 1.45rem; }
+    .service-card:hover .service-card__icon { color: var(--white); background: var(--green); }
+    .service-card__icon svg { width: 1.45rem; }
+    .service-card h3 { margin-bottom: 0.7rem; font-size: clamp(1.55rem, 3vw, 2.15rem); letter-spacing: -0.04em; }
+    .service-card p { margin: 0; color: var(--grey); }
+    .service-card:hover p { color: rgba(255, 255, 255, 0.7); }
 
-    .slab-card h3 {
-      margin-bottom: 0.7rem;
-      font-size: clamp(1.55rem, 3vw, 2.15rem);
-      letter-spacing: -0.04em;
+    /* FINISH OPTIONS */
+    .finishes { color: var(--white); background: var(--charcoal); }
+    .finishes .eyebrow { color: rgba(255, 255, 255, 0.72); }
+    .finishes__heading { margin-bottom: 3rem; }
+    .finishes__heading p { max-width: 42rem; margin-bottom: 0; color: rgba(255, 255, 255, 0.65); }
+
+    .finish-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+
+    .finish-card {
+      min-height: 24rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem;
+      background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.025));
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      transition: border-color 180ms ease, transform 180ms ease;
     }
 
-    .slab-card p { margin: 0; color: var(--grey); }
-    .slab-card:hover p { color: rgba(255, 255, 255, 0.7); }
-
-    /* FF/FL */
-    .precision {
-      color: var(--white);
-      background: var(--charcoal);
-    }
-
-    .precision__grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-      gap: clamp(3rem, 8vw, 7rem);
-      align-items: stretch;
-    }
-
-    .precision__image {
-      min-height: 42rem;
-      background-color: #29312d;
-      background-image:
-        linear-gradient(180deg, transparent 60%, rgba(3, 57, 44, 0.75)),
-        url("assets/images/commercial/commercial-finishing-equipment.webp");
-      background-position: center;
-      background-size: cover;
-      box-shadow: 1.5rem 1.5rem 0 rgba(0, 166, 80, 0.12);
-    }
-
-    .precision__copy { align-self: center; }
-    .precision .eyebrow { color: rgba(255, 255, 255, 0.74); }
-
-    .precision__copy > p {
-      margin-bottom: 2rem;
-      color: rgba(255, 255, 255, 0.68);
-      font-size: 1.05rem;
-    }
-
-    .measure-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-      margin-bottom: 2.1rem;
-    }
-
-    .measure-card {
-      padding: 1.5rem;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .measure-card strong {
-      display: block;
-      margin-bottom: 0.4rem;
-      color: var(--green);
-      font-family: "Manrope", system-ui, sans-serif;
-      font-size: 1.8rem;
-    }
-
-    .measure-card span { color: rgba(255, 255, 255, 0.67); font-size: 0.91rem; }
+    .finish-card:hover { border-color: var(--green); transform: translateY(-0.3rem); }
+    .finish-card__line { width: 3rem; height: 3px; margin-bottom: auto; background: var(--green); }
+    .finish-card h3 { margin-bottom: 0.7rem; font-size: 1.65rem; }
+    .finish-card p { margin: 0; color: rgba(255, 255, 255, 0.64); }
 
     /* PROCESS */
     .process__grid {
@@ -357,11 +277,7 @@
     }
 
     .process__intro { position: sticky; top: 3rem; }
-
-    .process-list {
-      counter-reset: process;
-      border-top: 1px solid var(--line);
-    }
+    .process-list { counter-reset: process; border-top: 1px solid var(--line); }
 
     .process-item {
       counter-increment: process;
@@ -404,21 +320,10 @@
       gap: 1rem;
     }
 
-    .project-image {
-      position: relative;
-      overflow: hidden;
-      background-color: #303934;
-      background-position: center;
-      background-size: cover;
-    }
-
-    .project-image:first-child {
-      grid-row: 1 / 3;
-      background-image: url("assets/images/commercial/commercial-project-01.webp");
-    }
-
-    .project-image:nth-child(2) { background-image: url("assets/images/commercial/commercial-project-02.webp"); }
-    .project-image:nth-child(3) { background-image: url("assets/images/commercial/commercial-project-03.webp"); }
+    .project-image { position: relative; overflow: hidden; background-color: #303934; background-position: center; background-size: cover; }
+    .project-image:first-child { grid-row: 1 / 3; background-image: url("assets/images/residential/residential-project-01.webp"); }
+    .project-image:nth-child(2) { background-image: url("assets/images/residential/residential-project-02.webp"); }
+    .project-image:nth-child(3) { background-image: url("assets/images/residential/residential-project-03.webp"); }
 
     .project-image::after {
       position: absolute;
@@ -441,15 +346,9 @@
     }
 
     .text-link:hover { color: var(--green); }
-    .text-link svg { width: 1rem; }
 
     /* CTA */
-    .cta {
-      position: relative;
-      overflow: hidden;
-      color: var(--white);
-      background: var(--green);
-    }
+    .cta { position: relative; overflow: hidden; color: var(--white); background: var(--green); }
 
     .cta::after {
       position: absolute;
@@ -472,23 +371,12 @@
       gap: 3rem;
     }
 
-    .cta h2 {
-      max-width: 48rem;
-      margin-bottom: 0.75rem;
-      font-size: clamp(2.4rem, 5vw, 4.7rem);
-      letter-spacing: -0.055em;
-    }
-
+    .cta h2 { max-width: 48rem; margin-bottom: 0.75rem; font-size: clamp(2.4rem, 5vw, 4.7rem); letter-spacing: -0.055em; }
     .cta p { margin: 0; color: rgba(255, 255, 255, 0.82); font-size: 1.05rem; }
     .cta .button { flex: 0 0 auto; background: var(--charcoal); }
     .cta .button:hover { background: var(--deep); }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(1.2rem);
-      transition: opacity 600ms ease, transform 600ms ease;
-    }
-
+    .reveal { opacity: 0; transform: translateY(1.2rem); transition: opacity 600ms ease, transform 600ms ease; }
     .reveal.is-visible { opacity: 1; transform: none; }
 
     @media (prefers-reduced-motion: reduce) {
@@ -503,13 +391,11 @@
     }
 
     @media (max-width: 900px) {
-      .intro__grid,
-      .precision__grid,
-      .process__grid { grid-template-columns: 1fr; }
-
+      .intro__grid, .process__grid { grid-template-columns: 1fr; }
       .intro__columns { grid-template-columns: 1fr; }
-      .precision__image { min-height: 32rem; }
       .process__intro { position: static; }
+      .finish-grid { grid-template-columns: 1fr; }
+      .finish-card { min-height: 18rem; }
 
       .cta__inner {
         min-height: 27rem;
@@ -522,14 +408,8 @@
     @media (max-width: 700px) {
       .hero { min-height: 39rem; }
       .hero h1 { font-size: clamp(3.15rem, 15vw, 5.2rem); }
-
-      .slab-types__heading,
-      .project-strip__heading {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .slab-grid { grid-template-columns: 1fr; }
+      .service-heading, .project-strip__heading { align-items: flex-start; flex-direction: column; }
+      .service-grid { grid-template-columns: 1fr; }
 
       .project-grid {
         grid-template-columns: 1fr;
@@ -541,8 +421,6 @@
 
     @media (max-width: 480px) {
       .section { padding: 4.5rem 0; }
-      .measure-grid { grid-template-columns: 1fr; }
-      .precision__image { min-height: 25rem; box-shadow: 0.75rem 0.75rem 0 rgba(0, 166, 80, 0.12); }
       .process-item { grid-template-columns: 1fr; gap: 0.75rem; }
       .cta .button { width: 100%; }
     }
@@ -558,69 +436,69 @@
         <nav class="breadcrumb" aria-label="Breadcrumb">
           <a href="index.html">Home</a><span aria-hidden="true">/</span>
           <a href="services.html">Services</a><span aria-hidden="true">/</span>
-          <span aria-current="page">Commercial Concrete</span>
+          <span aria-current="page">Residential Concrete</span>
         </nav>
-        <h1 id="page-title">Commercial slabs built for <span>performance.</span></h1>
-        <p class="hero__text">Commercial, suspended, slab-on-grade and structural concrete work supported by capable equipment and a finish-focused approach.</p>
+        <h1 id="page-title">Concrete made for <span>everyday life.</span></h1>
+        <p class="hero__text">Basement floors, garage floors, sidewalks and driveways completed with careful preparation and a finish suited to your property.</p>
         <a class="button" href="contact.html">Discuss Your Project <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></a>
       </div>
     </section>
 
-    <section class="section intro" aria-labelledby="intro-title">
+    <section class="section" aria-labelledby="intro-title">
       <div class="container intro__grid">
-        <div class="reveal"><span class="eyebrow">Commercial concrete</span></div>
+        <div class="reveal"><span class="eyebrow">Residential concrete</span></div>
         <div class="intro__copy reveal">
-          <h2 id="intro-title">The slab is part of how the building <span>works.</span></h2>
+          <h2 id="intro-title">Strong surfaces for the way your property is <span>used.</span></h2>
           <div class="intro__columns">
-            <p>Commercial concrete floors can support equipment movement, interior systems, storage, public circulation and day-to-day operations. Their placement and finish must respond to those demands.</p>
-            <p>Diamond Concrete Works Ltd. approaches each commercial slab around its intended use, structural requirements, access conditions, planned finish and project-specific floor tolerances.</p>
+            <p>Residential concrete should handle daily traffic, changing weather and the practical demands of your home while maintaining a clean, finished appearance.</p>
+            <p>Diamond Concrete Works Ltd. considers access, drainage, preparation, intended use and finish selection before the concrete placement begins.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section slab-types" aria-labelledby="slab-title">
+    <section class="section residential-services" aria-labelledby="services-title">
       <div class="container">
-        <div class="slab-types__heading reveal">
-          <div><span class="eyebrow">Slab capabilities</span><h2 class="section-title" id="slab-title">Concrete for different structural conditions.</h2></div>
+        <div class="service-heading reveal">
+          <div><span class="eyebrow">Residential capabilities</span><h2 class="section-title" id="services-title">Concrete where your home needs it.</h2></div>
         </div>
 
-        <div class="slab-grid reveal">
-          <article class="slab-card">
-            <div class="slab-card__top"><span class="slab-card__number">01</span><span class="slab-card__icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 18h18M5 14h14M7 10h10M9 6h6"/></svg></span></div>
-            <div><h3>Commercial Slabs</h3><p>Large concrete floor areas planned around the operational requirements of commercial spaces.</p></div>
+        <div class="service-grid reveal">
+          <article class="service-card">
+            <div class="service-card__top"><span class="service-card__number">01</span><span class="service-card__icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19h16M5 15h14M7 11h10M9 7h6"/></svg></span></div>
+            <div><h3>Basement Floors</h3><p>Interior concrete floors planned around the foundation, access, elevation and intended use of the basement.</p></div>
           </article>
 
-          <article class="slab-card">
-            <div class="slab-card__top"><span class="slab-card__number">02</span><span class="slab-card__icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 18h16M7 6v12M17 6v12M7 12h10"/></svg></span></div>
-            <div><h3>Suspended Slabs</h3><p>Elevated concrete slabs coordinated with structural support, reinforcement and project access.</p></div>
+          <article class="service-card">
+            <div class="service-card__top"><span class="service-card__number">02</span><span class="service-card__icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 20V9l9-6 9 6v11M7 20v-7h10v7M8 16h8"/></svg></span></div>
+            <div><h3>Garage Floors</h3><p>Durable garage slabs prepared and finished for vehicles, storage and regular household use.</p></div>
           </article>
 
-          <article class="slab-card">
-            <div class="slab-card__top"><span class="slab-card__number">03</span><span class="slab-card__icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 16h18M5 12h14M4 20h16"/></svg></span></div>
-            <div><h3>Slab on Grade</h3><p>Ground-supported slabs built around preparation, reinforcement, placement and finish requirements.</p></div>
+          <article class="service-card">
+            <div class="service-card__top"><span class="service-card__number">03</span><span class="service-card__icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20 9 4h6l5 16M7 14h10M8 10h8"/></svg></span></div>
+            <div><h3>Sidewalks</h3><p>Walkways shaped around safe access, positive drainage and a finish appropriate for outdoor foot traffic.</p></div>
           </article>
 
-          <article class="slab-card">
-            <div class="slab-card__top"><span class="slab-card__number">04</span><span class="slab-card__icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 20V5h14v15M5 10h14M10 5v15M14 5v15"/></svg></span></div>
-            <div><h3>Structural Slabs</h3><p>Reinforced concrete slab work completed in coordination with the structural project requirements.</p></div>
+          <article class="service-card">
+            <div class="service-card__top"><span class="service-card__number">04</span><span class="service-card__icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3h14l2 18H3L5 3ZM8 3v18M16 3v18"/></svg></span></div>
+            <div><h3>Driveways</h3><p>Concrete driveways designed around vehicle access, property layout, drainage and the selected surface finish.</p></div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section precision" aria-labelledby="precision-title">
-      <div class="container precision__grid">
-        <div class="precision__image reveal" role="img" aria-label="Commercial concrete floor finishing equipment"></div>
-        <div class="precision__copy reveal">
-          <span class="eyebrow">FF/FL objectives</span>
-          <h2 class="section-title" id="precision-title">Flat and level by more than appearance.</h2>
-          <p>Commercial slabs may have specified floor flatness and floor levelness requirements. We use appropriate placement and finishing equipment to support the FF/FL objectives established for the project.</p>
-          <div class="measure-grid">
-            <div class="measure-card"><strong>FF</strong><span>Floor flatness relates to shorter-distance surface variation.</span></div>
-            <div class="measure-card"><strong>FL</strong><span>Floor levelness relates to elevation variation over longer distances.</span></div>
-          </div>
-          <a class="button" href="contact.html">Discuss Slab Requirements</a>
+    <section class="section finishes" aria-labelledby="finishes-title">
+      <div class="container">
+        <div class="finishes__heading reveal">
+          <span class="eyebrow">Finish options</span>
+          <h2 class="section-title" id="finishes-title">Choose the surface character.</h2>
+          <p>The appropriate finish depends on where the concrete is placed, how it will be used and the appearance you want to achieve.</p>
+        </div>
+
+        <div class="finish-grid reveal">
+          <article class="finish-card"><span class="finish-card__line" aria-hidden="true"></span><h3>Broom Finish</h3><p>A practical textured surface commonly selected for exterior concrete where traction is important.</p></article>
+          <article class="finish-card"><span class="finish-card__line" aria-hidden="true"></span><h3>Exposed Aggregate</h3><p>A decorative surface that reveals the concrete aggregate for added texture and visual detail.</p></article>
+          <article class="finish-card"><span class="finish-card__line" aria-hidden="true"></span><h3>Stamped Concrete</h3><p>A patterned decorative finish that gives patios, walkways and other surfaces a distinct appearance.</p></article>
         </div>
       </div>
     </section>
@@ -628,15 +506,15 @@
     <section class="section" aria-labelledby="process-title">
       <div class="container process__grid">
         <div class="process__intro reveal">
-          <span class="eyebrow">Project approach</span>
-          <h2 class="section-title" id="process-title">A coordinated path to the finished slab.</h2>
-          <p class="section-intro">Commercial slab quality depends on preparation, timing, equipment and site coordination working together.</p>
+          <span class="eyebrow">Our approach</span>
+          <h2 class="section-title" id="process-title">Thoughtful work from preparation to finish.</h2>
+          <p class="section-intro">A successful residential project starts with understanding the property and coordinating each stage of the work.</p>
         </div>
         <div class="process-list reveal">
-          <article class="process-item"><div><h3>Review the slab requirements</h3><p>Confirm the intended use, project documents, finish expectations, access and planned concrete placement.</p></div></article>
-          <article class="process-item"><div><h3>Coordinate preparation</h3><p>Account for formwork, reinforcement, embeds, penetrations and the readiness of the placement area.</p></div></article>
-          <article class="process-item"><div><h3>Place and control the surface</h3><p>Coordinate delivery, placement and levelling activities around the planned sequence of work.</p></div></article>
-          <article class="process-item"><div><h3>Complete the required finish</h3><p>Use the finishing method and equipment appropriate for the slab, project conditions and desired result.</p></div></article>
+          <article class="process-item"><div><h3>Review the project</h3><p>Discuss the location, intended use, dimensions, access conditions and preferred finish.</p></div></article>
+          <article class="process-item"><div><h3>Prepare the area</h3><p>Coordinate the subgrade, forms, reinforcement, elevations and other requirements before placement.</p></div></article>
+          <article class="process-item"><div><h3>Place the concrete</h3><p>Manage placement around site access, weather conditions and the planned sequence of work.</p></div></article>
+          <article class="process-item"><div><h3>Complete the finish</h3><p>Apply the selected finish and complete the surface details appropriate for the project.</p></div></article>
         </div>
       </div>
     </section>
@@ -644,20 +522,20 @@
     <section class="section project-strip" aria-labelledby="projects-title">
       <div class="container">
         <div class="project-strip__heading reveal">
-          <div><span class="eyebrow">Commercial work</span><h2 class="section-title" id="projects-title">Preparation, placement and finishing on site.</h2></div>
+          <div><span class="eyebrow">Residential work</span><h2 class="section-title" id="projects-title">Built around the home and its surroundings.</h2></div>
           <a class="text-link" href="projects.html">View all projects <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></a>
         </div>
         <div class="project-grid reveal">
-          <div class="project-image" role="img" aria-label="Commercial concrete placement project"></div>
-          <div class="project-image" role="img" aria-label="Commercial slab reinforcement and preparation"></div>
-          <div class="project-image" role="img" aria-label="Commercial concrete finishing operation"></div>
+          <div class="project-image" role="img" aria-label="Finished residential concrete driveway"></div>
+          <div class="project-image" role="img" aria-label="Residential concrete garage floor"></div>
+          <div class="project-image" role="img" aria-label="Residential concrete walkway with a decorative finish"></div>
         </div>
       </div>
     </section>
 
     <section class="cta" aria-labelledby="cta-title">
       <div class="container cta__inner">
-        <div class="reveal"><h2 id="cta-title">Planning a commercial slab?</h2><p>Share the scope, location and project requirements with Diamond Concrete Works Ltd.</p></div>
+        <div class="reveal"><h2 id="cta-title">Planning concrete work at home?</h2><p>Tell Diamond Concrete Works Ltd. what you need and where the project is located.</p></div>
         <a class="button reveal" href="contact.html">Request a Quote <svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></a>
       </div>
     </section>
